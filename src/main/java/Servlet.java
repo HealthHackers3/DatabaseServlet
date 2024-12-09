@@ -17,10 +17,11 @@ public class Servlet extends HttpServlet {
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//        resp.setContentType("text/html");
-//        resp.getWriter().write("Thank you client! "+reqBody);
-
+        // Read the bytes of the body – ie the message
+        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        resp.setContentType("text/html");
+        resp.getWriter().write("Thank you client! "+reqBody);
     }
+
 
 }
