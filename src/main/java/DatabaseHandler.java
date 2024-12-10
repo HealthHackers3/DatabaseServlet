@@ -4,7 +4,7 @@ import java.sql.*;
 public class DatabaseHandler {
     public DatabaseHandler() throws SQLException {
         String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
-
+        System.out.println("Connecting to " + dbUrl);
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
