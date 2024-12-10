@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.5">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +48,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="New-Servlet-SQL" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,42 +74,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.HHDatabase [:Main.main()].executor": "Run",
-    "Gradle.HHDatabase [:org.example.Main.main()].executor": "Run",
-    "Gradle.HHDatabase [appRestart].executor": "Run",
-    "Gradle.HHDatabase [appStartWar].executor": "Run",
-    "Gradle.HHDatabase [appStart].executor": "Run",
-    "Gradle.HHDatabase [appStop].executor": "Run",
-    "Gradle.HHDatabase [war].executor": "Run",
-    "Gradle.HHDatabase.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "New-Servlet",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sctcl/IdeaProjects/GETRequestDebugger",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.HHDatabase [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;New-Servlet&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sctcl/IdeaProjects/GETRequestDebugger&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.HHDatabase [appStart]">
     <configuration name="HHDatabase [appRestart]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
