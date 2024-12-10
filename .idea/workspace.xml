@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="newservletcommit V1.0">
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/DatabaseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Patient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,22 +33,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="HHDatabase" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="HHDatabase" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="HHDatabase" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="gretty" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="HHDatabase" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
               </path>
             </expand>
             <select />
@@ -89,28 +77,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.HHDatabase [appRestart].executor": "Run",
-    "Gradle.HHDatabase [appStartWar].executor": "Run",
-    "Gradle.HHDatabase [appStart].executor": "Run",
-    "Gradle.HHDatabase [war].executor": "Run",
-    "Gradle.HHDatabase.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "New-Servlet",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;New-Servlet&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
-  <component name="RunManager" selected="Gradle.HHDatabase [war]">
+}</component>
+  <component name="RunManager" selected="Gradle.HHDatabase [appStart]">
     <configuration name="HHDatabase [appRestart]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -177,6 +171,28 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="HHDatabase [appStop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="appStop" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="HHDatabase [war]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -201,9 +217,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HHDatabase [appStart]" />
+        <item itemvalue="Gradle.HHDatabase [appStop]" />
         <item itemvalue="Gradle.HHDatabase [war]" />
         <item itemvalue="Gradle.HHDatabase [appStartWar]" />
-        <item itemvalue="Gradle.HHDatabase [appStart]" />
         <item itemvalue="Gradle.HHDatabase [appRestart]" />
       </list>
     </recent_temporary>
@@ -225,7 +242,8 @@
       <option name="presentableId" value="Default" />
       <updated>1733525764799</updated>
       <workItem from="1733525765884" duration="1335000" />
-      <workItem from="1733764794671" duration="2195000" />
+      <workItem from="1733764794671" duration="9539000" />
+      <workItem from="1733788614948" duration="5028000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -243,7 +261,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733766014368</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="newservletcommit V1.1">
+      <option name="closed" value="true" />
+      <created>1733768776098</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733768776098</updated>
+    </task>
+    <task id="LOCAL-00004" summary="NS V1.3">
+      <option name="closed" value="true" />
+      <created>1733769119673</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1733769119673</updated>
+    </task>
+    <task id="LOCAL-00005" summary="NS V1.3">
+      <option name="closed" value="true" />
+      <created>1733769340753</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1733769340753</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +293,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="newservletcommit V1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="newservletcommit V1.0" />
+    <MESSAGE value="newservletcommit V1.1" />
+    <MESSAGE value="NS V1.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="NS V1.3" />
   </component>
 </project>
