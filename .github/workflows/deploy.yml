@@ -39,10 +39,3 @@ jobs:
           TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
         run: |
           tsuru app-deploy -a bioeng-hhack-app ROOT.war
-          
-      - name: Fetch Tsuru logs
-        run: |
-          tsuru app-log -a bioeng-hhack-app
-        env:
-          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
-          TSURU_HOST: ${{ secrets.TSURU_HOST }}
