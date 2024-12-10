@@ -16,6 +16,7 @@ public class Servlet extends HttpServlet {
         System.out.println("doGet");
         String la = "lalala";
         String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
+        String sV = " Host: "+ System.getenv("PGHOST")+ " Port: "+System.getenv("PGPORT") + " Database: "+System.getenv("PGDATABASE") + " User: " + System.getenv("PGUSER") + " Password: "+System.getenv("PGPASSWORD");
 //        System.out.println(dbUrl);
 //        try {
 //            Class.forName("org.postgresql.Driver");
