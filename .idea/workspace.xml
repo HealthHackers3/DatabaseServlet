@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.6" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.7">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -352,7 +354,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733858984398</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="NS V1.6.7">
+      <option name="closed" value="true" />
+      <created>1733859706418</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733859706418</updated>
+    </task>
+    <task id="LOCAL-00013" summary="NS V1.6.7">
+      <option name="closed" value="true" />
+      <created>1733859721763</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733859721763</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,6 +385,7 @@
     <MESSAGE value="NS V1.6.4" />
     <MESSAGE value="NS V1.6.5" />
     <MESSAGE value="NS V1.6.6" />
-    <option name="LAST_COMMIT_MESSAGE" value="NS V1.6.6" />
+    <MESSAGE value="NS V1.6.7" />
+    <option name="LAST_COMMIT_MESSAGE" value="NS V1.6.7" />
   </component>
 </project>
