@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.5">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
-    </list>
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.3" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,6 +82,7 @@
     "Gradle.HHDatabase [war].executor": "Run",
     "Gradle.HHDatabase.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "New-Servlet",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sctcl/IdeaProjects/GETRequestDebugger",
@@ -248,7 +247,7 @@
       <workItem from="1733525765884" duration="1335000" />
       <workItem from="1733764794671" duration="9539000" />
       <workItem from="1733788614948" duration="5028000" />
-      <workItem from="1733844336366" duration="8635000" />
+      <workItem from="1733844336366" duration="9056000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -314,7 +313,39 @@
       <option name="project" value="LOCAL" />
       <updated>1733856264586</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="NS V1.5">
+      <option name="closed" value="true" />
+      <created>1733857704315</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1733857704315</updated>
+    </task>
+    <task id="LOCAL-00010" summary="NS V1.6">
+      <option name="closed" value="true" />
+      <created>1733857739254</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1733857739254</updated>
+    </task>
+    <task id="LOCAL-00011" summary="NS V1.6">
+      <option name="closed" value="true" />
+      <created>1733857952851</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1733857952851</updated>
+    </task>
+    <task id="LOCAL-00012" summary="NS V1.6.3">
+      <option name="closed" value="true" />
+      <created>1733858083579</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733858083579</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,6 +357,8 @@
     <MESSAGE value="NS V1.3" />
     <MESSAGE value="NS V1.4" />
     <MESSAGE value="NS V1.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="NS V1.5" />
+    <MESSAGE value="NS V1.6" />
+    <MESSAGE value="NS V1.6.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="NS V1.6.3" />
   </component>
 </project>
