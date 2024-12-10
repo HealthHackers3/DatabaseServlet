@@ -26,7 +26,7 @@ public class Servlet extends HttpServlet {
 //        } catch (Exception e) {
 //        }
         resp.setContentType("text/html");
-        resp.getWriter().write(dbUrl);
+        resp.getWriter().write(sV);
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
