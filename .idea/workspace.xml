@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.3">
-      <change afterPath="$PROJECT_DIR$/src/main/java/DatabaseHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.5">
       <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,34 +73,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;New-Servlet&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.HHDatabase [:Main.main()].executor": "Run",
+    "Gradle.HHDatabase [:org.example.Main.main()].executor": "Run",
+    "Gradle.HHDatabase [appRestart].executor": "Run",
+    "Gradle.HHDatabase [appStartWar].executor": "Run",
+    "Gradle.HHDatabase [appStart].executor": "Run",
+    "Gradle.HHDatabase [appStop].executor": "Run",
+    "Gradle.HHDatabase [war].executor": "Run",
+    "Gradle.HHDatabase.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "New-Servlet",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sctcl/IdeaProjects/GETRequestDebugger",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
-  <component name="RunManager" selected="Gradle.HHDatabase [appStart]">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
     <configuration name="HHDatabase [appRestart]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -244,6 +248,7 @@
       <workItem from="1733525765884" duration="1335000" />
       <workItem from="1733764794671" duration="9539000" />
       <workItem from="1733788614948" duration="5028000" />
+      <workItem from="1733844336366" duration="8635000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -285,7 +290,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733769340753</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="NS V1.3">
+      <option name="closed" value="true" />
+      <created>1733848297956</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733848297956</updated>
+    </task>
+    <task id="LOCAL-00007" summary="NS V1.4">
+      <option name="closed" value="true" />
+      <created>1733852644286</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733852644286</updated>
+    </task>
+    <task id="LOCAL-00008" summary="NS V1.5">
+      <option name="closed" value="true" />
+      <created>1733856264586</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1733856264586</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +324,8 @@
     <MESSAGE value="newservletcommit V1.0" />
     <MESSAGE value="newservletcommit V1.1" />
     <MESSAGE value="NS V1.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="NS V1.3" />
+    <MESSAGE value="NS V1.4" />
+    <MESSAGE value="NS V1.5" />
+    <option name="LAST_COMMIT_MESSAGE" value="NS V1.5" />
   </component>
 </project>
