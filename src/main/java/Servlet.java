@@ -21,6 +21,11 @@ public class Servlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("PostgreSQL Driver not found", e);
+        }
         //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
         System.out.println("Connecting to " + dbUrl);
@@ -32,7 +37,11 @@ public class Servlet extends HttpServlet {
         //hikariConfig.setPassword("guardspine");
         hikariConfig.setMaximumPoolSize(10); // Set the maximum number of connections in the pool
         dataSource = new HikariDataSource(hikariConfig);
-
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("PostgreSQL Driver not found", e);
+        }
         //setUpDatabase
 
     }
