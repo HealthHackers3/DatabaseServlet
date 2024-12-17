@@ -10,7 +10,6 @@ public class DatabaseHandler {
             Class.forName("org.postgresql.Driver");
         } catch (Exception e) {
         }
-
         Connection conn= DriverManager.getConnection(dbUrl, "postgres", "guardspine");
 
         try {

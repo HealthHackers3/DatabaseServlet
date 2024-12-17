@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.3" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.3">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/DatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/DatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +49,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="New-Servlet" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -83,7 +87,7 @@
     "Gradle.HHDatabase.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "New-Servlet",
+    "git-widget-placeholder": "New-Servlet-SQL",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/sctcl/IdeaProjects/GETRequestDebugger",
     "node.js.detected.package.eslint": "true",
@@ -220,10 +224,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HHDatabase [appStart]" />
-        <item itemvalue="Gradle.HHDatabase [appStop]" />
         <item itemvalue="Gradle.HHDatabase [war]" />
+        <item itemvalue="Gradle.HHDatabase [appStop]" />
         <item itemvalue="Gradle.HHDatabase [appStartWar]" />
+        <item itemvalue="Gradle.HHDatabase [appStart]" />
         <item itemvalue="Gradle.HHDatabase [appRestart]" />
       </list>
     </recent_temporary>
