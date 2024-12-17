@@ -3,17 +3,9 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <Grants>1||-9223372036854775808|c|G
-1||10|c|G
-1||10|C|G
-1||10|T|G
-4||-9223372036854775808|c|G
-4||10|c|G
-4||10|C|G
-4||10|T|G</Grants>
-      <IntrospectionStateNumber>768</IntrospectionStateNumber>
+      <IntrospectionStateNumber>781</IntrospectionStateNumber>
       <ServerVersion>17.2</ServerVersion>
-      <StartupTime>1733861777</StartupTime>
+      <StartupTime>1734309190</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -809,7 +801,7 @@ false Zulu
 14704||10|C|G
 14704||-9223372036854775808|U|G
 14704||10|U|G</Grants>
-      <IntrospectionStateNumber>768</IntrospectionStateNumber>
+      <IntrospectionStateNumber>781</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4231,8 +4223,8 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>768</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-10.20:16:33</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>781</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-17.13:27:10</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
@@ -4245,13 +4237,27 @@ false Zulu
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="266" parent="264" name="patients">
+    <sequence id="266" parent="264" name="users_id_seq">
+      <ObjectId>16402</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>780</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="267" parent="264" name="patients">
       <ObjectId>16389</ObjectId>
       <StateNumber>752</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="267" parent="266" name="id">
+    <table id="268" parent="264" name="users">
+      <ObjectId>16403</ObjectId>
+      <StateNumber>780</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="269" parent="267" name="id">
       <DefaultExpression>nextval(&apos;patients_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
@@ -4260,27 +4266,27 @@ false Zulu
       <SequenceId>16388</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="268" parent="266" name="familyname">
+    <column id="270" parent="267" name="familyname">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StateNumber>752</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="269" parent="266" name="givenname">
+    <column id="271" parent="267" name="givenname">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StateNumber>752</StateNumber>
       <StoredType>varchar(128)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <column id="270" parent="266" name="phonenumber">
+    <column id="272" parent="267" name="phonenumber">
       <Position>4</Position>
       <StateNumber>752</StateNumber>
       <StoredType>varchar(32)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="271" parent="266" name="patients_pkey">
+    <index id="273" parent="267" name="patients_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16393</ObjectId>
@@ -4289,12 +4295,51 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="272" parent="266" name="patients_pkey">
+    <key id="274" parent="267" name="patients_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16394</ObjectId>
       <Primary>1</Primary>
       <StateNumber>752</StateNumber>
       <UnderlyingIndexId>16393</UnderlyingIndexId>
+    </key>
+    <column id="275" parent="268" name="id">
+      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>780</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16402</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="276" parent="268" name="username">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>780</StateNumber>
+      <StoredType>varchar(50)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="277" parent="268" name="password">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>780</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="278" parent="268" name="users_pkey">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16407</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>780</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="279" parent="268" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16408</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>780</StateNumber>
+      <UnderlyingIndexId>16407</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
