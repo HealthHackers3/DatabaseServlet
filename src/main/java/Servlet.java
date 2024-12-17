@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,14 +17,14 @@ import java.sql.*;
 public class Servlet extends HttpServlet {
     Connection conn;
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(ServletConfig config) {
         //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
         String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
         System.out.println("Connecting to " + dbUrl);
         try {
             // Registers the driver
             Class.forName("org.postgresql.Driver");
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         try {
             //conn= DriverManager.getConnection(dbUrl, "postgres", "guardspine");
@@ -38,13 +37,14 @@ public class Servlet extends HttpServlet {
 
     }
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("doGet");
         resp.setContentType("text/html");
+        resp.getWriter().write("Server Running");
 
     }
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //SQL EXECUTE
         String sqlQuery=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         resp.setContentType("application/json");
