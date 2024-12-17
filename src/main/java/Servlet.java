@@ -40,19 +40,12 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("doGet");
-
         resp.setContentType("text/html");
-        resp.getWriter().write("Snibble Plibble");
+
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            System.out.println("doPost");
-            // Read the bytes of the body – ie the message
-//            String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//            resp.setContentType("text/html");
-//            System.out.println(reqBody);
-//            resp.getWriter().write("Thank you client! "+reqBody);
-            //SQL EXECUTE
+        //SQL EXECUTE
         String sqlQuery=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         resp.setContentType("application/json");
 
