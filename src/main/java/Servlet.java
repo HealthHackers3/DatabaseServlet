@@ -20,13 +20,13 @@ public class Servlet extends HttpServlet {
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Read the bytes of the body – ie the message
-        String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        Gson gson = new Gson();
-        Patient p=gson.fromJson(reqBody,Patient.class);
-        //resp.setContentType("application/json");
-        resp.setContentType("text/html");
-        resp.getWriter().write("Thank you client! "+reqBody);
+
+            // Read the bytes of the body – ie the message
+            String reqBody=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+            resp.setContentType("text/html");
+            resp.getWriter().write("Thank you client! "+reqBody);
+
+
     }
 
 
