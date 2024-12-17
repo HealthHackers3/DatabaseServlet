@@ -33,6 +33,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation group: 'com.google.code.gson', name:'gson', version: '2.7'
     runtimeOnly group: 'org.postgresql', name: 'postgresql', version: '42.2.18'
+    implementation 'com.zaxxer:HikariCP:5.0.1'  // Add this line for HikariCP
 }
 test {
     useJUnitPlatform()

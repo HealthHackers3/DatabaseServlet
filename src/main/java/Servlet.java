@@ -11,27 +11,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import java.sql.*;
+
 @WebServlet(urlPatterns={"/patients","/doctors"},loadOnStartup = 1)
 public class Servlet extends HttpServlet {
-    Connection conn;
+    private HikariDataSource dataSource;
+
     @Override
     public void init(ServletConfig config) {
-        //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
-        String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
+        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+        //String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
         System.out.println("Connecting to " + dbUrl);
-        try {
-            // Registers the driver
-            Class.forName("org.postgresql.Driver");
-        } catch (Exception ignored) {
-        }
-        try {
-            //conn= DriverManager.getConnection(dbUrl, "postgres", "guardspine");
-            conn= DriverManager.getConnection(dbUrl,System.getenv("PGUSER"),System.getenv("PGPASSWORD"));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        HikariConfig hikariConfig = new HikariConfig();
+        hikariConfig.setJdbcUrl(dbUrl);
+//        hikariConfig.setUsername(System.getenv("PGUSER"));
+//        hikariConfig.setPassword(System.getenv("PGPASSWORD"));
+        hikariConfig.setUsername("postgres");
+        hikariConfig.setPassword("guardspine");
+        hikariConfig.setMaximumPoolSize(10); // Set the maximum number of connections in the pool
+        dataSource = new HikariDataSource(hikariConfig);
 
         //setUpDatabase
 
@@ -45,18 +45,19 @@ public class Servlet extends HttpServlet {
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        //SQL EXECUTE
-        String sqlQuery=req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        String sqlQuery = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
         resp.setContentType("application/json");
 
-        try (Statement s = conn.createStatement()){
+        try (Connection conn = dataSource.getConnection();
+             Statement s = conn.createStatement()) {
+
             boolean wantsResponse = s.execute(sqlQuery);
-            if(wantsResponse){
+            if (wantsResponse) {
                 ResultSet rs = s.getResultSet();
                 ResultSetMetaData rsmd = rs.getMetaData();
                 int columnCount = rsmd.getColumnCount();
                 List<Map<String, Object>> resultList = new ArrayList<>();
-                while(rs.next()){
+                while (rs.next()) {
                     Map<String, Object> row = new HashMap<>();
                     for (int i = 1; i <= columnCount; i++) {
                         String columnName = rsmd.getColumnName(i);
@@ -65,14 +66,10 @@ public class Servlet extends HttpServlet {
                     }
                     resultList.add(row);
                 }
-                // Convert the result to JSON using Gson
                 Gson gson = new Gson();
                 String jsonResponse = gson.toJson(resultList);
-
-                // Send the JSON response back to the client
                 resp.getWriter().write(jsonResponse);
-            }
-            else{
+            } else {
                 int updateCount = s.getUpdateCount();
                 resp.getWriter().write("Update successful :) Rows affected: " + updateCount);
             }
@@ -81,7 +78,6 @@ public class Servlet extends HttpServlet {
             resp.getWriter().write("SQL Error :( : " + e.getMessage());
             e.printStackTrace();
         }
-
     }
 
 
