@@ -21,15 +21,15 @@ public class Servlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) {
-        String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
-        //String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
+        //String dbUrl = "jdbc:postgresql://localhost:5432/postgres";
+        String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
         System.out.println("Connecting to " + dbUrl);
         HikariConfig hikariConfig = new HikariConfig();
         hikariConfig.setJdbcUrl(dbUrl);
-//        hikariConfig.setUsername(System.getenv("PGUSER"));
-//        hikariConfig.setPassword(System.getenv("PGPASSWORD"));
-        hikariConfig.setUsername("postgres");
-        hikariConfig.setPassword("guardspine");
+        hikariConfig.setUsername(System.getenv("PGUSER"));
+        hikariConfig.setPassword(System.getenv("PGPASSWORD"));
+        //hikariConfig.setUsername("postgres");
+        //hikariConfig.setPassword("guardspine");
         hikariConfig.setMaximumPoolSize(10); // Set the maximum number of connections in the pool
         dataSource = new HikariDataSource(hikariConfig);
 
