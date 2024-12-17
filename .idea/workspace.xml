@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.8" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V1.6.8">
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -393,6 +395,7 @@
     <MESSAGE value="NS V1.6.6" />
     <MESSAGE value="NS V1.6.7" />
     <MESSAGE value="NS V1.6.8" />
-    <option name="LAST_COMMIT_MESSAGE" value="NS V1.6.8" />
+    <MESSAGE value="NS V1.7" />
+    <option name="LAST_COMMIT_MESSAGE" value="NS V1.7" />
   </component>
 </project>

@@ -14,19 +14,9 @@ public class Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("doGet");
-        String la = "lalala";
-        String dbUrl = "jdbc:postgresql://"+System.getenv("PGHOST")+":"+System.getenv("PGPORT")+"/"+System.getenv("PGDATABASE");
-        String sV = " Host: "+ System.getenv("PGHOST")+ " Port: "+System.getenv("PGPORT") + " Database: "+System.getenv("PGDATABASE") + " User: " + System.getenv("PGUSER") + " Password: "+System.getenv("PGPASSWORD");
-//        System.out.println(dbUrl);
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//            Connection conn= DriverManager.getConnection(dbUrl,System.getenv("PGUSER"),System.getenv("PGPASSWORD"));
-//            Statement stmt = conn.createStatement();
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM patients");
-//        } catch (Exception e) {
-//        }
+
         resp.setContentType("text/html");
-        resp.getWriter().write(sV);
+        resp.getWriter().write("Snibble Plibble");
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
