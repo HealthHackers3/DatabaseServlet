@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V2.11&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence">
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Servlet_Local.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getPostInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getUserInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postCommandHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +76,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -70,7 +85,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="New-Servlet-SQL" />
+        <entry key="$PROJECT_DIR$" value="New-Servlet" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,6 +102,10 @@
     &quot;accountId&quot;: &quot;bf1a8e69-1f8c-4f9b-ad17-b1467b4da9c8&quot;
   }
 }</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -96,43 +115,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.HHDatabase [:Main.main()].executor": "Run",
-    "Gradle.HHDatabase [:org.example.Main.main()].executor": "Run",
-    "Gradle.HHDatabase [appRestart].executor": "Run",
-    "Gradle.HHDatabase [appStartWar].executor": "Run",
-    "Gradle.HHDatabase [appStart].executor": "Run",
-    "Gradle.HHDatabase [appStop].executor": "Run",
-    "Gradle.HHDatabase [build].executor": "Run",
-    "Gradle.HHDatabase [war].executor": "Run",
-    "Gradle.HHDatabase.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "New-Servlet",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sctcl/IdeaProjects/GETRequestDebugger",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build HHDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ServletV3.0&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sctcl/IdeaProjects/GETRequestDebugger&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="postRequests" />
+      <recent name="" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.HHDatabase [build]">
+  <component name="RunManager" selected="Gradle.HHDatabase [appStart]">
     <configuration name="HHDatabase [appStartWar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -145,6 +170,50 @@
         <option name="taskNames">
           <list>
             <option value="appStartWar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HHDatabase [appStartWar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="appStartWar" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HHDatabase [appStart]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="appStart" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -199,6 +268,50 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="HHDatabase [appStop]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="appStop" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="HHDatabase [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="HHDatabase [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -243,12 +356,34 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="HHDatabase [war]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="war" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HHDatabase [build]" />
         <item itemvalue="Gradle.HHDatabase [appStart]" />
-        <item itemvalue="Gradle.HHDatabase [appStop]" />
+        <item itemvalue="Gradle.HHDatabase [build]" />
         <item itemvalue="Gradle.HHDatabase [war]" />
+        <item itemvalue="Gradle.HHDatabase [appStop]" />
         <item itemvalue="Gradle.HHDatabase [appStartWar]" />
       </list>
     </recent_temporary>
@@ -273,6 +408,11 @@
       <workItem from="1733764794671" duration="9539000" />
       <workItem from="1733788614948" duration="5028000" />
       <workItem from="1733844336366" duration="8635000" />
+      <workItem from="1734478011865" duration="12000" />
+      <workItem from="1734480160998" duration="21964000" />
+      <workItem from="1734694017232" duration="16078000" />
+      <workItem from="1734715213216" duration="6349000" />
+      <workItem from="1734735989566" duration="11298000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -474,7 +614,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734451659679</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings">
+      <option name="closed" value="true" />
+      <created>1734454770509</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1734454770509</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,6 +658,7 @@
     <MESSAGE value="NS V2.1 using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
     <MESSAGE value="NS V2.1&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
     <MESSAGE value="NS V2.11&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
-    <option name="LAST_COMMIT_MESSAGE" value="NS V2.11&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
+    <MESSAGE value="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings" />
   </component>
 </project>

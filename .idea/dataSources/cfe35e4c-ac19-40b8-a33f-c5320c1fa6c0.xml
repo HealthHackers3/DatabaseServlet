@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.53">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>781</IntrospectionStateNumber>
+      <IntrospectionStateNumber>814</IntrospectionStateNumber>
       <ServerVersion>17.2</ServerVersion>
       <StartupTime>1734309190</StartupTime>
       <TimeZones>true ACDT
@@ -801,7 +801,7 @@ false Zulu
 14704||10|C|G
 14704||-9223372036854775808|U|G
 14704||10|U|G</Grants>
-      <IntrospectionStateNumber>781</IntrospectionStateNumber>
+      <IntrospectionStateNumber>814</IntrospectionStateNumber>
       <ObjectId>5</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -4223,123 +4223,419 @@ false Zulu
     <schema id="264" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>781</IntrospectionStateNumber>
-      <LastIntrospectionLocalTimestamp>2024-12-17.13:27:10</LastIntrospectionLocalTimestamp>
+      <IntrospectionStateNumber>814</IntrospectionStateNumber>
+      <LastIntrospectionLocalTimestamp>2024-12-19.19:55:08</LastIntrospectionLocalTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>532</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
-    <sequence id="265" parent="264" name="patients_id_seq">
-      <ObjectId>16388</ObjectId>
+    <sequence id="265" parent="264" name="lpost_images_image_id_seq">
+      <ObjectId>16518</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>752</StateNumber>
+      <StateNumber>810</StateNumber>
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <sequence id="266" parent="264" name="users_id_seq">
-      <ObjectId>16402</ObjectId>
+    <sequence id="266" parent="264" name="lposts_post_id_seq">
+      <ObjectId>16503</ObjectId>
       <SequenceIdentity>1</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>780</StateNumber>
+      <StateNumber>809</StateNumber>
       <StoredType>integer|0s</StoredType>
       <OwnerName>postgres</OwnerName>
     </sequence>
-    <table id="267" parent="264" name="patients">
-      <ObjectId>16389</ObjectId>
-      <StateNumber>752</StateNumber>
+    <sequence id="267" parent="264" name="ltags_tag_id_seq">
+      <ObjectId>16559</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>813</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="268" parent="264" name="lusers_user_id_seq">
+      <ObjectId>16489</ObjectId>
+      <SequenceIdentity>1</SequenceIdentity>
+      <StartValue>1</StartValue>
+      <StateNumber>808</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="269" parent="264" name="lpost_images">
+      <ObjectId>16519</ObjectId>
+      <StateNumber>810</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <table id="268" parent="264" name="users">
-      <ObjectId>16403</ObjectId>
-      <StateNumber>780</StateNumber>
+    <table id="270" parent="264" name="lpost_likes">
+      <ObjectId>16532</ObjectId>
+      <StateNumber>811</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
-    <column id="269" parent="267" name="id">
-      <DefaultExpression>nextval(&apos;patients_id_seq&apos;::regclass)</DefaultExpression>
+    <table id="271" parent="264" name="lposts">
+      <ObjectId>16504</ObjectId>
+      <StateNumber>809</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="272" parent="264" name="ltags">
+      <ObjectId>16560</ObjectId>
+      <StateNumber>813</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="273" parent="264" name="luser_profile_pics">
+      <ObjectId>16547</ObjectId>
+      <StateNumber>812</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="274" parent="264" name="lusers">
+      <ObjectId>16490</ObjectId>
+      <StateNumber>809</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <column id="275" parent="269" name="image_id">
+      <DefaultExpression>nextval(&apos;lpost_images_image_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>752</StateNumber>
+      <StateNumber>810</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <SequenceId>16388</SequenceId>
+      <SequenceId>16518</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="270" parent="267" name="familyname">
+    <column id="276" parent="269" name="post_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>752</StateNumber>
-      <StoredType>varchar(128)|0s</StoredType>
-      <TypeId>1043</TypeId>
+      <StateNumber>810</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
     </column>
-    <column id="271" parent="267" name="givenname">
+    <column id="277" parent="269" name="order_index">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>752</StateNumber>
-      <StoredType>varchar(128)|0s</StoredType>
-      <TypeId>1043</TypeId>
+      <StateNumber>810</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
     </column>
-    <column id="272" parent="267" name="phonenumber">
+    <column id="278" parent="269" name="image_data">
+      <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>752</StateNumber>
-      <StoredType>varchar(32)|0s</StoredType>
-      <TypeId>1043</TypeId>
+      <StateNumber>810</StateNumber>
+      <StoredType>bytea|0s</StoredType>
+      <TypeId>17</TypeId>
     </column>
-    <index id="273" parent="267" name="patients_pkey">
-      <ColNames>id</ColNames>
+    <foreign-key id="279" parent="269" name="lpost_images_post_id_fkey">
+      <ColNames>post_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16393</ObjectId>
+      <ObjectId>16527</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>810</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16504</RefTableId>
+    </foreign-key>
+    <index id="280" parent="269" name="lpost_images_pkey">
+      <ColNames>image_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16525</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>752</StateNumber>
+      <StateNumber>810</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="274" parent="267" name="patients_pkey">
+    <key id="281" parent="269" name="lpost_images_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16394</ObjectId>
+      <ObjectId>16526</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>752</StateNumber>
-      <UnderlyingIndexId>16393</UnderlyingIndexId>
+      <StateNumber>810</StateNumber>
+      <UnderlyingIndexId>16525</UnderlyingIndexId>
     </key>
-    <column id="275" parent="268" name="id">
-      <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
+    <column id="282" parent="270" name="user_id">
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>780</StateNumber>
+      <StateNumber>811</StateNumber>
       <StoredType>integer|0s</StoredType>
-      <SequenceId>16402</SequenceId>
       <TypeId>23</TypeId>
     </column>
-    <column id="276" parent="268" name="username">
+    <column id="283" parent="270" name="post_id">
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>780</StateNumber>
-      <StoredType>varchar(50)|0s</StoredType>
-      <TypeId>1043</TypeId>
+      <StateNumber>811</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
     </column>
-    <column id="277" parent="268" name="password">
+    <foreign-key id="284" parent="270" name="lpost_likes_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16542</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>811</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16490</RefTableId>
+    </foreign-key>
+    <foreign-key id="285" parent="270" name="lpost_likes_post_id_fkey">
+      <ColNames>post_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16537</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>811</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16504</RefTableId>
+    </foreign-key>
+    <index id="286" parent="270" name="lpost_likes_pkey">
+      <ColNames>user_id
+post_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16535</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>811</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="287" parent="270" name="lpost_likes_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16536</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>811</StateNumber>
+      <UnderlyingIndexId>16535</UnderlyingIndexId>
+    </key>
+    <check id="288" parent="271" name="lposts_likes_check">
+      <ColNames>likes</ColNames>
+      <ObjectId>16510</ObjectId>
+      <Predicate>likes &gt;= 0</Predicate>
+      <StateNumber>809</StateNumber>
+    </check>
+    <column id="289" parent="271" name="post_id">
+      <DefaultExpression>nextval(&apos;lposts_post_id_seq&apos;::regclass)</DefaultExpression>
       <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>809</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16503</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="290" parent="271" name="poster_id">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>809</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="291" parent="271" name="likes">
+      <DefaultExpression>0</DefaultExpression>
       <Position>3</Position>
-      <StateNumber>780</StateNumber>
+      <StateNumber>809</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="292" parent="271" name="upload_date">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>4</Position>
+      <StateNumber>809</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <foreign-key id="293" parent="271" name="lposts_poster_id_fkey">
+      <ColNames>poster_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16513</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>809</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16490</RefTableId>
+    </foreign-key>
+    <index id="294" parent="271" name="lposts_pkey">
+      <ColNames>post_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16511</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>809</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="295" parent="271" name="lposts_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16512</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>809</StateNumber>
+      <UnderlyingIndexId>16511</UnderlyingIndexId>
+    </key>
+    <column id="296" parent="272" name="tag_id">
+      <DefaultExpression>nextval(&apos;ltags_tag_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>813</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16559</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="297" parent="272" name="tag_name">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>813</StateNumber>
       <StoredType>varchar(255)|0s</StoredType>
       <TypeId>1043</TypeId>
     </column>
-    <index id="278" parent="268" name="users_pkey">
-      <ColNames>id</ColNames>
+    <index id="298" parent="272" name="ltags_pkey">
+      <ColNames>tag_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16407</ObjectId>
+      <ObjectId>16564</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>780</StateNumber>
+      <StateNumber>813</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="279" parent="268" name="users_pkey">
+    <index id="299" parent="272" name="ltags_tag_name_key">
+      <ColNames>tag_name</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16408</ObjectId>
+      <ObjectId>16566</ObjectId>
+      <StateNumber>813</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="300" parent="272" name="ltags_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16565</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>780</StateNumber>
-      <UnderlyingIndexId>16407</UnderlyingIndexId>
+      <StateNumber>813</StateNumber>
+      <UnderlyingIndexId>16564</UnderlyingIndexId>
+    </key>
+    <key id="301" parent="272" name="ltags_tag_name_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16567</ObjectId>
+      <StateNumber>813</StateNumber>
+      <UnderlyingIndexId>16566</UnderlyingIndexId>
+    </key>
+    <column id="302" parent="273" name="user_id">
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>812</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="303" parent="273" name="profile_pic">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>812</StateNumber>
+      <StoredType>bytea|0s</StoredType>
+      <TypeId>17</TypeId>
+    </column>
+    <foreign-key id="304" parent="273" name="luser_profile_pics_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16554</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <StateNumber>812</StateNumber>
+      <RefKeyColPositions>1</RefKeyColPositions>
+      <RefTableId>16490</RefTableId>
+    </foreign-key>
+    <index id="305" parent="273" name="luser_profile_pics_pkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16552</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>812</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="306" parent="273" name="luser_profile_pics_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16553</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>812</StateNumber>
+      <UnderlyingIndexId>16552</UnderlyingIndexId>
+    </key>
+    <column id="307" parent="274" name="user_id">
+      <DefaultExpression>nextval(&apos;lusers_user_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>808</StateNumber>
+      <StoredType>integer|0s</StoredType>
+      <SequenceId>16489</SequenceId>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="308" parent="274" name="username">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>808</StateNumber>
+      <StoredType>varchar(100)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="309" parent="274" name="password">
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>808</StateNumber>
+      <StoredType>text|0s</StoredType>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="310" parent="274" name="email">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>808</StateNumber>
+      <StoredType>varchar(255)|0s</StoredType>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="311" parent="274" name="created_at">
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <Position>5</Position>
+      <StateNumber>808</StateNumber>
+      <StoredType>timestamp|0s</StoredType>
+      <TypeId>1114</TypeId>
+    </column>
+    <index id="312" parent="274" name="lusers_pkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16497</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>808</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="313" parent="274" name="lusers_username_key">
+      <ColNames>username</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16499</ObjectId>
+      <StateNumber>808</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="314" parent="274" name="lusers_email_key">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16501</ObjectId>
+      <StateNumber>808</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="315" parent="274" name="lusers_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16498</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>808</StateNumber>
+      <UnderlyingIndexId>16497</UnderlyingIndexId>
+    </key>
+    <key id="316" parent="274" name="lusers_username_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16500</ObjectId>
+      <StateNumber>808</StateNumber>
+      <UnderlyingIndexId>16499</UnderlyingIndexId>
+    </key>
+    <key id="317" parent="274" name="lusers_email_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16502</ObjectId>
+      <StateNumber>808</StateNumber>
+      <UnderlyingIndexId>16501</UnderlyingIndexId>
     </key>
   </database-model>
 </dataSource>
