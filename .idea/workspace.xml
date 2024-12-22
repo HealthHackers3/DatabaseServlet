@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Servlet_Local.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getCommandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getPostInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getUserInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postCommandHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/deploy.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/deploy.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
-    </list>
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="servlet V3.0&#10;using restapi. Specifically for image uploading." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -412,7 +396,7 @@
       <workItem from="1734480160998" duration="21964000" />
       <workItem from="1734694017232" duration="16078000" />
       <workItem from="1734715213216" duration="6349000" />
-      <workItem from="1734735989566" duration="11298000" />
+      <workItem from="1734735989566" duration="11639000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -622,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734454770509</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="servlet V3.0&#10;using restapi. Specifically for image uploading.">
+      <option name="closed" value="true" />
+      <created>1734866456207</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1734866456207</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -659,6 +651,7 @@
     <MESSAGE value="NS V2.1&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
     <MESSAGE value="NS V2.11&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
     <MESSAGE value="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings" />
-    <option name="LAST_COMMIT_MESSAGE" value="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings" />
+    <MESSAGE value="servlet V3.0&#10;using restapi. Specifically for image uploading." />
+    <option name="LAST_COMMIT_MESSAGE" value="servlet V3.0&#10;using restapi. Specifically for image uploading." />
   </component>
 </project>
