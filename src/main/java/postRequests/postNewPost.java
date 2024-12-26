@@ -1,147 +1,263 @@
 package postRequests;
 
-import org.apache.commons.fileupload.*;
-import org.apache.commons.fileupload.disk.*;
-import org.apache.commons.fileupload.servlet.*;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemIterator;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.sql.*;
+import java.util.*;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 
-public class postNewPost implements postCommandHandler {
+class postNewPost implements postCommandHandler {
+    private final Map<String, postCommandHandler> userInfoCommands = new HashMap<>();
+    private final String[] commands;
 
-    private static final String UPLOAD_DIRECTORY = "var/uploads"; // Directory to store images
-
-    @Override
-    public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException, ServletException {
-        System.out.println("Handling the new post request");
-        Part filePart = req.getPart("file");
-        String fileName = filePart.getSubmittedFileName();
-        for (Part part : req.getParts()) {
-            part.write(UPLOAD_DIRECTORY + "/" + fileName);
-        }
-        resp.setContentType("application/json");
-        resp.setCharacterEncoding("UTF-8");
-        resp.getWriter().write("{\"message\": \"Successfully Uploaded\"}");
+    public postNewPost(String[] commands){
+        this.commands = commands;
+        userInfoCommands.put("upload", new postPostImage(commands));
     }
 
-//        req.getHeaderNames().asIterator().forEachRemaining(header ->
-//                System.out.println(header + ": " + req.getHeader(header))
-//        );
-//
-//        System.out.println("Content-Type: " + req.getContentType());
-//        System.out.println("=================");
-//        InputStream inputStream = req.getInputStream();
-//        byte[] data = new byte[inputStream.available()];
-//        inputStream.read(data);
-//
-//// Convert byte array to string
-//        String rawBody = new String(data, StandardCharsets.UTF_8);
-//
-//// Log the raw body to check the form data
-//        System.out.println("Raw request body: " + rawBody);
-//        // Check if the request is multipart (contains file data)
-//        if (ServletFileUpload.isMultipartContent(req)) {
-//            // Create a file item factory and configure upload handler
-//            DiskFileItemFactory factory = new DiskFileItemFactory();
-//            factory.setSizeThreshold(DiskFileItemFactory.DEFAULT_SIZE_THRESHOLD);
-//
-//            ServletFileUpload upload = new ServletFileUpload(factory);
-//            upload.setFileSizeMax(1024 * 1024 * 10); // Max file size (10MB)
-//            upload.setSizeMax(1024 * 1024 * 50); // Max request size (50MB)
-//
-//            try {
-//                // Parse the request
-//                List<FileItem> formItems = upload.parseRequest(req);
-//
-//                String title = null;
-//                String description = null;
-//                String categoryId = null;
-//                String cellTypeId = null;
-//                File imageFile = null;
-//
-//                System.out.println(formItems.size());
-//                System.out.println(formItems);
-//                // Iterate over form items to extract metadata and image
-//                for (FileItem item : formItems) {
-//                    System.out.println(item.getFieldName());
-//                    if (item.isFormField()) {
-//                        // Handle form fields (metadata)
-//                        if ("title".equals(item.getFieldName())) {
-//                            System.out.println("Test Orange1");
-//                            title = item.getString();
-//                        } else if ("description".equals(item.getFieldName())) {
-//                            System.out.println("Test Orange2");
-//                            description = item.getString();
-//                        } else if ("category_id".equals(item.getFieldName())) {
-//                            System.out.println("Test Orange3");
-//                            categoryId = item.getString();
-//                        } else if ("cell_type_id".equals(item.getFieldName())) {
-//                            System.out.println("Test Orange4");
-//                            cellTypeId = item.getString();
-//                        }
-//                    } else {
-//                        System.out.println("Test Orange5");
-//                        // Handle file field (image)
-//                        if ("image".equals(item.getFieldName())) {
-//                            System.out.println("Test Cyan");
-//                            // Get the image file name and save it locally
-//                            String fileName = FilenameUtils.getName(item.getName());
-//                            String filePath = req.getServletContext().getRealPath(UPLOAD_DIRECTORY) + File.separator + fileName;
-//                            File storeFile = new File(filePath);
-//                            System.out.println(filePath);
-//                            //item.write(storeFile); // Write the file to the disk
-//                            imageFile = storeFile;
-//                        }
-//                    }
-//                }
-//                // At this point, metadata and imageFile are ready to be saved
-//                if (title != null && description != null && categoryId != null && cellTypeId != null && imageFile != null) {
-//                    // Save the metadata and image path to the database
-//                    saveMetadataToDatabase(s, title, description, categoryId, cellTypeId, imageFile);
-//
-//                    // Respond with success message
-//                    resp.getWriter().write("{\"message\": \"Post created successfully!\"}");
-//                } else {
-//                    resp.setContentType("application/json");
-//                    resp.setCharacterEncoding("UTF-8");
-//                    resp.getWriter().write("{\"error\": \"Missing required fields or file.\"}");
-//                }
-//
-//            } catch (Exception ex) {
-//                resp.setContentType("application/json");
-//                resp.setCharacterEncoding("UTF-8");
-//                resp.getWriter().write("{\"error\": \"Error uploading post: " + ex.getMessage() + "\"}");
-//            }
-//        } else {
-//            resp.setContentType("application/json");
-//            resp.setCharacterEncoding("UTF-8");
-//            resp.getWriter().write("{\"error\": \"Request is not multipart.\"}");
-//        }
-//    }
+    @Override
+    public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException {
+        try{
+            userInfoCommands.get(commands[1]).handle(req, resp, s);
+        }catch (Exception e){
+            //resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            resp.getWriter().write("{\"error\": \"Invalid post command\"}");
+            return;
+        }
+    }
 
-//    private void saveMetadataToDatabase(Statement s, String title, String description, String categoryId, String cellTypeId, File imageFile) throws SQLException {
-//        // SQL query to insert the metadata and image path into the database
-//        String sql = "INSERT INTO posts (title, description, category_id, cell_type_id, image_path) VALUES (?, ?, ?, ?, ?)";
-//        System.out.println(title + ":" + description + ":" + categoryId + ":" + cellTypeId + ":" + imageFile);
-////        try (PreparedStatement pstmt = s.getConnection().prepareStatement(sql)) {
-//////            pstmt.setString(1, title);
-//////            pstmt.setString(2, description);
-//////            pstmt.setString(3, categoryId);
-//////            pstmt.setString(4, cellTypeId);
-//////            pstmt.setString(5, imageFile.getAbsolutePath());
-//////            System.out.println("");// Save the file path to the database
-////
-////            //pstmt.executeUpdate(); // Execute the insert
-////        }
-//    }
 }
+
+
+class postPostImage implements postCommandHandler {
+
+    //private static final String UPLOAD_DIRECTORY = "var\\uploads"; // Directory to store images
+    private static final int MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+    private static final int MAX_MEM_SIZE = 4 * 1024 * 1024;   // 4MB
+
+    private static final String UPLOAD_DIRECTORY = "var\\uploads"; // Directory to store images
+    private static final Logger log = LoggerFactory.getLogger(postPostImage.class);
+    String[] commands;
+    public postPostImage(String[] commands) {
+    this.commands = commands;
+    }
+
+    @Override
+    public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s)
+            throws IOException, ServletException {
+
+        int order_index;
+        String image_file_name;
+        int cell_count;
+        float cell_dimensions_y;
+        float cell_dimensions_x;
+        float cell_density;
+        // Check if the request is multipart
+        boolean isMultipart = ServletFileUpload.isMultipartContent(req);
+        if (!isMultipart) {
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{\"error\": \"Request is not multipart\"}");
+            return;
+        }
+
+        // Set up the file upload configuration
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+        factory.setSizeThreshold(MAX_MEM_SIZE); // Set memory threshold
+        factory.setRepository(new File(System.getProperty("java.io.tmpdir"))); // Temporary directory
+
+        ServletFileUpload upload = new ServletFileUpload(factory);
+        upload.setSizeMax(MAX_FILE_SIZE); // Set max file size
+
+        // Define the upload path relative to your project folder
+        String projectPath = System.getProperty("user.dir"); // Base directory of the project
+        String uploadPath = projectPath + File.separator + UPLOAD_DIRECTORY;
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdirs();
+        }
+        Map<Integer, Map<String, String>> imageData = new HashMap<>();
+        ArrayList<FileItem> imageSaveData = new ArrayList<>();
+        try {
+            String filePath = null;
+            // Parse the request to extract file items
+            List<FileItem> fileItems = upload.parseRequest(req);
+
+            for (FileItem item : fileItems) {
+                // Process form fields or file items
+
+                if (item.isFormField()) {
+                    // Get the field name and value
+                    String fieldName = item.getFieldName();
+                    String fieldValue = item.getString();
+
+                    // Extract the index from the field name (e.g., "order_index_0" -> index = 0)
+                        int index = Integer.parseInt(getLastCharacter(fieldName));
+
+                        // Create a map for each image index if not already created
+                        imageData.putIfAbsent(index, new HashMap<>());
+
+                        // Store the field value in the corresponding map
+                        imageData.get(index).put(chopLastTwoCharacters(fieldName), fieldValue);
+                }
+                else{
+                    imageSaveData.add(item);
+                }
+            }
+
+
+            System.out.println(imageData);
+            insertImages(imageData, imageSaveData, Integer.parseInt(commands[2]), s, uploadPath, resp);
+            //System.out.println(Arrays.toString(commands));
+            //System.out.println("{\"message\": \"File uploaded successfully\", \"file_location\": \" " + filePath + "\"}");
+            //assert filePath != null;
+            //System.out.println("INSERT INTO lpost_images (post_id, image_order, image_url) VALUES (" + commands[2] + "," + commands[3] + "," + filePath.replace("\\", "/") + ")");
+            //s.execute("INSERT INTO lpost_images (post_id, image_order, image_url) VALUES (" + commands[2] + "," + commands[3] + "," + filePath.replace("\\", "/") + ")");
+            // Send a success response
+
+
+        } catch (FileUploadException e) {
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{\"error\": \"File upload failed: " + e.getMessage() + "\"}");
+        } catch (Exception e) {
+            resp.setContentType("application/json");
+            resp.setCharacterEncoding("UTF-8");
+            resp.getWriter().write("{\"error\": \"An error occurred: " + e.getMessage() + "\"}");
+        }
+    }
+    public static String chopLastTwoCharacters(String input) {
+        if (input == null || input.length() < 2) {
+            throw new IllegalArgumentException("Input string must have at least two characters");
+        }
+        return input.substring(0, input.length() - 2); // Return the string without the last two characters
+    }
+    public static String getLastCharacter(String input) {
+        if (input == null || input.isEmpty()) {
+            throw new IllegalArgumentException("Input string cannot be null or empty");
+        }
+
+        return String.valueOf(input.charAt(input.length() - 1)); // Get the last character
+    }
+    public static void insertImages(Map<Integer, Map<String, String>> imageData, ArrayList<FileItem> imageSaveData, int postId, Statement s, String uploadPath, HttpServletResponse resp) throws SQLException, IOException {
+        Statement stmt = null;
+
+        try {
+            for (FileItem item : imageSaveData) {
+                Map<String, String> imageDetails = imageData.get(Integer.parseInt(getLastCharacter(item.getFieldName())));
+                System.out.println(imageDetails);
+
+                // Extract fields from the map
+                int orderIndex = Integer.parseInt(imageDetails.get("order_index"));
+                String imageFileName = imageDetails.get("image_file_name");
+                int cellCount = Integer.parseInt(imageDetails.get("cell_count"));
+                int cellDimensionsX = Integer.parseInt(imageDetails.get("cell_dimensions_x"));
+                int cellDimensionsY = Integer.parseInt(imageDetails.get("cell_dimensions_y"));
+                int cellDensity = Integer.parseInt(imageDetails.get("cell_density"));
+
+                // Construct the SQL query dynamically
+                String insertSQL = "INSERT INTO Lpost_images (post_id, order_index, image_file_name, cell_count, cell_dimensions_x, cell_dimensions_y, cell_density) "
+                        + "VALUES (" + postId + ", " + orderIndex + ", '" + imageFileName + "', " + cellCount + ", "
+                        + cellDimensionsX + ", " + cellDimensionsY + ", " + cellDensity + ") RETURNING image_id";
+
+                // Execute the insert and retrieve the image_id
+                int imageId = 0;
+                try (ResultSet rs = s.executeQuery(insertSQL)) {
+                    if (rs.next()) {
+                        imageId = rs.getInt("image_id");
+                    }
+                    String fileName = "[" + imageId + "][" + postId + "][" + orderIndex +"]"+FilenameUtils.getName(item.getName());
+                    String filePath = uploadPath + "\\fullResPostImages" + File.separator + fileName;
+                    System.out.println(filePath);
+                    s.executeUpdate("UPDATE Lpost_images SET image_path = '" + filePath + "' WHERE image_id = '" + imageId + "'");
+                    File uploadedFile = new File(filePath);
+                    item.write(uploadedFile); // Save the file
+                    insertThumbnails(uploadPath, imageId, postId, fileName, s);
+                    resp.setContentType("application/json");
+                    resp.setCharacterEncoding("UTF-8");
+
+                    resp.getWriter().write("{\"message\": \"File uploaded successfully\", \"file_location\": \"" + filePath + "\"}");
+                }catch (Exception e) {
+                    resp.setContentType("application/json");
+                    resp.setCharacterEncoding("UTF-8");
+                    resp.getWriter().write("{\"error\": \"An error occurred: " + e.getMessage() + "\"}");
+                }
+
+
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+    }
+    public static void insertThumbnails(String uploadPath, int fullResId, int postId, String fileName, Statement s) throws SQLException, IOException {
+        int thumbnailHeight = 500;
+        int thumbnailWidth = 500;
+
+        try {
+            File inputFile = new File(uploadPath + "\\fullResPostImages" + File.separator + fileName);
+            BufferedImage originalImage = ImageIO.read(inputFile);
+
+            int originalWidth = originalImage.getWidth();
+            int originalHeight = originalImage.getHeight();
+
+            // Calculate new dimensions while maintaining aspect ratio
+            int newWidth = thumbnailWidth;
+            int newHeight = thumbnailHeight;
+
+            if (originalWidth > originalHeight) {
+                // Landscape image
+                newHeight = (int) (thumbnailWidth * ((double) originalHeight / originalWidth));
+            } else {
+                // Portrait or square image
+                newWidth = (int) (thumbnailHeight * ((double) originalWidth / originalHeight));
+            }
+
+            BufferedImage thumbnailImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_RGB);
+
+            Graphics2D g = thumbnailImage.createGraphics();
+            g.drawImage(originalImage, 0, 0, newWidth, newHeight, null);
+            g.dispose();
+            String thumbnailPath =uploadPath + "\\thumbnailPostImages" + File.separator + "thumbnail_" + fileName;;
+            File outputFile = new File(thumbnailPath);
+
+
+            String insertSQL = "INSERT INTO Lpost_images_thumbnails (post_id, ref_image_id, image_path) "
+                    + "VALUES (" +postId + ", " + fullResId + ", '" + thumbnailPath + "')";
+            System.out.println(insertSQL);
+            try {
+                s.execute(insertSQL);
+                ImageIO.write(thumbnailImage, "jpg", outputFile);
+            }catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+
+
+        } catch (Exception e) {
+            log.error("e: ", e);
+            throw new RuntimeException(e);
+        }
+    }
+
+}
+

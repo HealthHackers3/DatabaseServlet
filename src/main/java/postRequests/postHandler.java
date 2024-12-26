@@ -31,7 +31,7 @@ public class postHandler {
 
         //define get commands commands
         commandHandlers.put("sqlraw", new postSQLCommand(commands));
-        commandHandlers.put("post", new postNewPost());
+        commandHandlers.put("img", new postNewPost(commands));
 
     }
 

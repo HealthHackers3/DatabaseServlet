@@ -24,6 +24,8 @@ public class getHandler {
 
         //define get commands commands
         commandHandlers.put("users", new getUserInfo(commands));
+        commandHandlers.put("img", new getImgInfo(commands));
+        commandHandlers.put("post", new getUserInfo(commands));
 
 
     }
