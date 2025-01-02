@@ -1,6 +1,8 @@
 
 import com.zaxxer.hikari.HikariDataSource;
 import getRequests.getHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import postRequests.postHandler;
 
 import javax.servlet.ServletConfig;
@@ -21,6 +23,7 @@ import java.util.*;
         maxRequestSize = 1024 * 1024 * 100
 )
 public class Servlet_Local extends HttpServlet {
+    private static final Logger log = LoggerFactory.getLogger(Servlet_Local.class);
     private HikariDataSource dataSource;
     private String dbUrl = "jdbc:postgresql://localhost:5432/postgres"; //connection to SQL Db URL
     @Override
@@ -54,15 +57,22 @@ public class Servlet_Local extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("application/json"); //Respond in JSON format
-        String[] pathComponenets = req.getPathInfo().substring(1).split("/");//Remove the first character (always '/') then split an array at every subsequent '/' to get the command specifics
-
-        try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "guardspine"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
-            System.out.println("Executing GET query at: " + Arrays.toString(pathComponenets));
-              getHandler gH = new getHandler(pathComponenets, req, resp, s);//create new getHandler to do deal with the get requeset.
+        try{
+            String[] pathComponenets = req.getPathInfo().substring(1).split("/");//Remove the first character (always '/') then split an array at every subsequent '/' to get the command specifics
+            try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "guardspine"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
+                System.out.println("Executing GET query at: " + Arrays.toString(pathComponenets));
+                getHandler gH = new getHandler(pathComponenets, req, resp, s);//create new getHandler to do deal with the get requeset.
                 gH.execute();
-        } catch (SQLException e) {
-            resp.getWriter().write("{\"error\": \"Issue connecting to PostgreSQL from server\"}");
+            } catch (SQLException e) {
+                resp.getWriter().write("{\"error\": \"Issue connecting to PostgreSQL from server\"}");
+            }
+        }catch(Exception e){
+            log.error("e: ", e);
+            resp.getWriter().write("{\"error\": \"Invalid request path\"}");
         }
+
+
+
     }
 
     @Override

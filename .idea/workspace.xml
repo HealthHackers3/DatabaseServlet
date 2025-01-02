@@ -4,19 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="servlet V3.0&#10;using restapi. Specifically for image uploading.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/getRequests/getImgInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="servlet V3.2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/getRequests/getHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getPostInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/getRequests/getPostInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/postRequests/postHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/postRequests/postHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet_Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet_Local.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getImgInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/getRequests/getImgInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost1.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -410,7 +402,9 @@
       <workItem from="1734694017232" duration="16078000" />
       <workItem from="1734715213216" duration="6349000" />
       <workItem from="1734735989566" duration="27521000" />
-      <workItem from="1735210253711" duration="7447000" />
+      <workItem from="1735210253711" duration="10472000" />
+      <workItem from="1735339396636" duration="1959000" />
+      <workItem from="1735762812064" duration="5534000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -636,7 +630,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734866584666</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="servlet V3.2">
+      <option name="closed" value="true" />
+      <created>1735249744150</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1735249744150</updated>
+    </task>
+    <task id="LOCAL-00030" summary="servlet V3.2">
+      <option name="closed" value="true" />
+      <created>1735249768750</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1735249768750</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -674,6 +684,7 @@
     <MESSAGE value="NS V2.11&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
     <MESSAGE value="NS V2.2&#10;using hikari to manage connection pools&#10;with better leakage detection and settings" />
     <MESSAGE value="servlet V3.0&#10;using restapi. Specifically for image uploading." />
-    <option name="LAST_COMMIT_MESSAGE" value="servlet V3.0&#10;using restapi. Specifically for image uploading." />
+    <MESSAGE value="servlet V3.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="servlet V3.2" />
   </component>
 </project>
