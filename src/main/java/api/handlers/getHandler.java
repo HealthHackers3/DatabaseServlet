@@ -1,4 +1,9 @@
-package getRequests;
+package api.handlers;
+
+import api.debug.getErrorConsole;
+import api.interfaces.apiCommandHandler;
+import api.img.getImgMap;
+import api.user.getUserMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +15,7 @@ import java.util.Map;
 
 public class getHandler {
     //class variables
-    private final Map<String, getCommandHandler> commandHandlers = new HashMap<>();
+    private final Map<String, apiCommandHandler> commandHandlers = new HashMap<>();
     HttpServletRequest req;
     HttpServletResponse resp;
     String[] commands;
@@ -21,17 +26,16 @@ public class getHandler {
         this.resp = resp;
         this.s = s;
         this.commands = commandPath;
-
         //define get commands commands
-        commandHandlers.put("users", new getUserInfo(commands));
-        commandHandlers.put("img", new getImgInfo(commands));
-        commandHandlers.put("post", new getUserInfo(commands));
+        commandHandlers.put("users", new getUserMap(commands));
+        commandHandlers.put("img", new getImgMap(commands));
+        commandHandlers.put("console", new getErrorConsole());
 
 
     }
 
     //execute command
-    public void execute() throws IOException, SQLException {
+    public void execute() throws Exception {
         //check if command exists
         if (commands[0] == null || !commandHandlers.containsKey(commands[0])) {
             //resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);

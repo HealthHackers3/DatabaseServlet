@@ -1,16 +1,18 @@
-package postRequests;
+package api.img;
 
+import api.interfaces.apiCommandHandler;
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import util.centralisedLogger;
+import util.errorHandler;
+import util.userAuthenticator;
 
 import javax.imageio.ImageIO;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.*;
@@ -19,15 +21,14 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
-import java.io.*;
 import java.util.List;
 
 
-class postNewPost implements postCommandHandler {
-    private final Map<String, postCommandHandler> userInfoCommands = new HashMap<>();
+public class postImgMap implements apiCommandHandler {
+    private final Map<String, apiCommandHandler> userInfoCommands = new HashMap<>();
     private final String[] commands;
 
-    public postNewPost(String[] commands){
+    public postImgMap(String[] commands){
         this.commands = commands;
         userInfoCommands.put("upload", new postPostImage(commands));
     }
@@ -37,8 +38,7 @@ class postNewPost implements postCommandHandler {
         try{
             userInfoCommands.get(commands[1]).handle(req, resp, s);
         }catch (Exception e){
-            //resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().write("{\"error\": \"Invalid post command\"}");
+            handleError(resp,"{\"error\": \"Invalid post command\"}", e);
             return;
         }
     }
@@ -46,7 +46,7 @@ class postNewPost implements postCommandHandler {
 }
 
 
-class postPostImage implements postCommandHandler {
+class postPostImage implements apiCommandHandler {
 
     //private static final String UPLOAD_DIRECTORY = "var\\uploads"; // Directory to store images
     private static final int MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
@@ -61,8 +61,9 @@ class postPostImage implements postCommandHandler {
 
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s)
-            throws IOException, ServletException {
-
+            throws Exception {
+        centralisedLogger.log("Command: " + Arrays.toString(commands));
+        if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
         int order_index;
         String image_file_name;
         int cell_count;
@@ -122,25 +123,12 @@ class postPostImage implements postCommandHandler {
                 }
             }
 
-
-            System.out.println(imageData);
             insertImages(imageData, imageSaveData, Integer.parseInt(commands[2]), s, uploadPath, resp);
-            //System.out.println(Arrays.toString(commands));
-            //System.out.println("{\"message\": \"File uploaded successfully\", \"file_location\": \" " + filePath + "\"}");
-            //assert filePath != null;
-            //System.out.println("INSERT INTO lpost_images (post_id, image_order, image_url) VALUES (" + commands[2] + "," + commands[3] + "," + filePath.replace("\\", "/") + ")");
-            //s.execute("INSERT INTO lpost_images (post_id, image_order, image_url) VALUES (" + commands[2] + "," + commands[3] + "," + filePath.replace("\\", "/") + ")");
-            // Send a success response
-
 
         } catch (FileUploadException e) {
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write("{\"error\": \"File upload failed: " + e.getMessage() + "\"}");
+            handleError(resp, "{\"error\": \"File upload failed\"}", e);
         } catch (Exception e) {
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write("{\"error\": \"An error occurred: " + e.getMessage() + "\"}");
+            handleError(resp, "{\"error\": \"An error occurred\"}", e);
         }
     }
     public static String chopLastTwoCharacters(String input) {
@@ -162,7 +150,6 @@ class postPostImage implements postCommandHandler {
         try {
             for (FileItem item : imageSaveData) {
                 Map<String, String> imageDetails = imageData.get(Integer.parseInt(getLastCharacter(item.getFieldName())));
-                System.out.println(imageDetails);
 
                 // Extract fields from the map
                 int orderIndex = Integer.parseInt(imageDetails.get("order_index"));
@@ -185,7 +172,6 @@ class postPostImage implements postCommandHandler {
                     }
                     String fileName = "[" + imageId + "][" + postId + "][" + orderIndex +"]"+FilenameUtils.getName(item.getName());
                     String filePath = uploadPath + "\\fullResPostImages" + File.separator + fileName;
-                    System.out.println(filePath);
                     s.executeUpdate("UPDATE Lpost_images SET image_path = '" + filePath + "' WHERE image_id = '" + imageId + "'");
                     File uploadedFile = new File(filePath);
                     item.write(uploadedFile); // Save the file
@@ -195,9 +181,7 @@ class postPostImage implements postCommandHandler {
 
                     resp.getWriter().write("{\"message\": \"File uploaded successfully\", \"file_location\": \"" + filePath + "\"}");
                 }catch (Exception e) {
-                    resp.setContentType("application/json");
-                    resp.setCharacterEncoding("UTF-8");
-                    resp.getWriter().write("{\"error\": \"An error occurred: " + e.getMessage() + "\"}");
+                    new errorHandler(resp, "{\"error\": \"An error occurred\"}", e);
                 }
 
 
@@ -244,7 +228,6 @@ class postPostImage implements postCommandHandler {
 
             String insertSQL = "INSERT INTO Lpost_images_thumbnails (post_id, ref_image_id, image_path) "
                     + "VALUES (" +postId + ", " + fullResId + ", '" + thumbnailPath + "')";
-            System.out.println(insertSQL);
             try {
                 s.execute(insertSQL);
                 ImageIO.write(thumbnailImage, "jpg", outputFile);

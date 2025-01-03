@@ -42,6 +42,8 @@ dependencies {
     implementation 'commons-io:commons-io:2.11.0' // File handling utilities
     implementation 'org.slf4j:slf4j-api:2.0.9' // SLF4J for logging
     implementation 'ch.qos.logback:logback-classic:1.4.11' // Logback for SLF4J
+    implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
 
 }
 test {

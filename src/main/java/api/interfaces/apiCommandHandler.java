@@ -1,8 +1,8 @@
-package postRequests;
+package api.interfaces;
 
 import com.google.gson.Gson;
+import util.errorHandler;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-interface postCommandHandler {
-    void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException, ServletException;
+public interface apiCommandHandler {
+    void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception;
 
     default void statement2Json(HttpServletRequest req, HttpServletResponse resp, Statement s) throws SQLException, IOException {
         ResultSet rs = s.getResultSet();
@@ -37,6 +37,10 @@ interface postCommandHandler {
         String jsonResponse = gson.toJson(resultList);
         // Send the JSON response back to the client
         resp.getWriter().write(jsonResponse);
+    }
+
+    default void handleError(HttpServletResponse resp, String errorMessage, Exception e) throws SQLException, IOException {
+        errorHandler errorHandler = new errorHandler(resp, errorMessage, e);
     }
 
 }

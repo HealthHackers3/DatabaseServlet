@@ -2,9 +2,9 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/console.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/getRequests/getImgInfo.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/getRequests/getUserInfo.java" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/src/main/java/postRequests/postNewPost.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/api/img/getImgMap.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/api/img/postImgMap.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/api/user/getCreatedDate.java" dialect="PostgreSQL" />
     <file url="PROJECT" dialect="PostgreSQL" />
   </component>
 </project>

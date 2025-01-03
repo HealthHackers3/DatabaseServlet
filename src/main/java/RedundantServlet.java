@@ -13,7 +13,7 @@
 //import javax.servlet.http.HttpServletResponse;
 //import com.zaxxer.hikari.HikariConfig;
 //import com.zaxxer.hikari.HikariDataSource;
-//import java.sql.*;
+//import java.debug.*;
 //
 //@WebServlet(urlPatterns={"/patients","/doctors"},loadOnStartup = 1)
 //public class RedundantServlet extends HttpServlet {
