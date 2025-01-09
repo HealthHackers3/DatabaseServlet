@@ -4,36 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="servlet V3.3">
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/auth/postAuthMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/auth/postLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/auth/postNewUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/debug/getErrorConsole.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/debug/postSQLRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/getCreatedDate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/getEmail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/getUserMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/getUsername.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/centralisedLogger.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/errorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/passwordHasher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/userAuthenticator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="nicely organised with all the auth stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RedundantServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RedundantServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Servlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet_Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Servlet_Local.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getCommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/interfaces/apiCommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/handlers/getHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getImgInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/img/getImgMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getPostInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/post/getPostInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/getRequests/getUserInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/postRequests/postCommandHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/postRequests/postHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/handlers/postHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/postRequests/postNewPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/img/postImgMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,39 +101,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build HHDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ServletV3.0-pretty&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sctcl/Downloads/SamCliffordTest2-main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build HHDatabase.executor": "Run",
+    "Gradle.HHDatabase [:Main.main()].executor": "Run",
+    "Gradle.HHDatabase [:org.example.Main.main()].executor": "Run",
+    "Gradle.HHDatabase [appRestart].executor": "Run",
+    "Gradle.HHDatabase [appStartWar].executor": "Run",
+    "Gradle.HHDatabase [appStart].executor": "Run",
+    "Gradle.HHDatabase [appStop].executor": "Run",
+    "Gradle.HHDatabase [build].executor": "Run",
+    "Gradle.HHDatabase [war].executor": "Run",
+    "Gradle.HHDatabase.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "ServletV3.0-Pretty",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sctcl/Downloads/SamCliffordTest2-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -430,7 +402,7 @@
       <workItem from="1735210253711" duration="10472000" />
       <workItem from="1735339396636" duration="1959000" />
       <workItem from="1735762812064" duration="6368000" />
-      <workItem from="1735839962600" duration="27887000" />
+      <workItem from="1735839962600" duration="30539000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -680,7 +652,23 @@
       <option name="project" value="LOCAL" />
       <updated>1735821578605</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="nicely organised with all the auth stuff">
+      <option name="closed" value="true" />
+      <created>1735936967834</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1735936967834</updated>
+    </task>
+    <task id="LOCAL-00033" summary="nicely organised with all the auth stuff">
+      <option name="closed" value="true" />
+      <created>1735937043556</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1735937043556</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -720,6 +708,7 @@
     <MESSAGE value="servlet V3.0&#10;using restapi. Specifically for image uploading." />
     <MESSAGE value="servlet V3.2" />
     <MESSAGE value="servlet V3.3" />
-    <option name="LAST_COMMIT_MESSAGE" value="servlet V3.3" />
+    <MESSAGE value="nicely organised with all the auth stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="nicely organised with all the auth stuff" />
   </component>
 </project>
