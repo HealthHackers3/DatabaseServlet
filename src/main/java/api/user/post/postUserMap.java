@@ -1,6 +1,9 @@
-package api.user;
+package api.user.post;
 
 import api.interfaces.apiCommandHandler;
+import api.user.get.getCreatedDate;
+import api.user.get.getEmail;
+import api.user.get.getUsername;
 import util.centralisedLogger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +16,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class getUserMap implements apiCommandHandler {
+public class postUserMap implements apiCommandHandler {
     private final Map<String, apiCommandHandler> userInfoCommands = new HashMap<>();
     private final String[] commands;
 
-    public getUserMap(String[] commands){
+    public postUserMap(String[] commands){
         this.commands = commands;
         userInfoCommands.put("username", new getUsername(commands));
         userInfoCommands.put("email", new getEmail(commands));
