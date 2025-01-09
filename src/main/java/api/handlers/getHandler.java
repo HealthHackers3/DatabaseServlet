@@ -3,7 +3,7 @@ package api.handlers;
 import api.debug.getErrorConsole;
 import api.interfaces.apiCommandHandler;
 import api.img.getImgMap;
-import api.user.getUserMap;
+import api.user.get.getUserMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

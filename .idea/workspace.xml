@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="nicely organised with all the auth stuff">
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/post/postEmail.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/post/postUserMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/user/post/postUsername.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/handlers/getHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/handlers/getHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/handlers/postHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/handlers/postHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/user/getCreatedDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/user/get/getCreatedDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/user/getEmail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/user/get/getEmail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/user/getUserMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/user/get/getUserMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/user/getUsername.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/user/get/getUsername.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/userAuthenticator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/userAuthenticator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -402,7 +413,7 @@
       <workItem from="1735210253711" duration="10472000" />
       <workItem from="1735339396636" duration="1959000" />
       <workItem from="1735762812064" duration="6368000" />
-      <workItem from="1735839962600" duration="30539000" />
+      <workItem from="1735839962600" duration="35733000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -668,7 +679,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735937043556</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="nicely organised with all the auth stuff">
+      <option name="closed" value="true" />
+      <created>1736429044303</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1736429044303</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

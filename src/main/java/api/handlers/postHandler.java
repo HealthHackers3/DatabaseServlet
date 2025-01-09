@@ -3,9 +3,8 @@ import api.auth.postAuthMap;
 import api.img.postImgMap;
 import api.interfaces.apiCommandHandler;
 import api.debug.postSQLRequest;
-import util.userAuthenticator;
+import api.user.post.postUserMap;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class postHandler {
         commandHandlers.put("sqlraw", new postSQLRequest(commands));
         commandHandlers.put("img", new postImgMap(commands));
         commandHandlers.put("auth", new postAuthMap(commands));
-
+        commandHandlers.put("users", new postUserMap(commands));
     }
 
     //execute command
