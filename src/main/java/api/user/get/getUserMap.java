@@ -30,14 +30,14 @@ public class getUserMap implements apiCommandHandler {
         try{
             Integer.parseInt(commands[1]);
         }catch (Exception e){
-            handleError(resp, "{\"error\": \"Invalid UserID\"}", e);
+            handleError(resp, "Invalid UserID", e);
             return;
         }
 
         try{
             userInfoCommands.get(commands[2]).handle(req, resp, s);
         }catch (Exception e){
-            handleError(resp, "{\"error\": \"Invalid User Field\"}", e);
+            handleError(resp, "Invalid User Field", e);
             return;
         }
     }

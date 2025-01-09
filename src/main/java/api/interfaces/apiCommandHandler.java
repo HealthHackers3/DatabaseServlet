@@ -2,6 +2,7 @@ package api.interfaces;
 
 import com.google.gson.Gson;
 import util.errorHandler;
+import util.successHandler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,6 +42,10 @@ public interface apiCommandHandler {
 
     default void handleError(HttpServletResponse resp, String errorMessage, Exception e) throws SQLException, IOException {
         errorHandler errorHandler = new errorHandler(resp, errorMessage, e);
+    }
+
+    default void handleSuccess(HttpServletResponse resp, String successMessage) throws SQLException, IOException {
+        successHandler successHandler = new successHandler(resp, successMessage);
     }
 
 }

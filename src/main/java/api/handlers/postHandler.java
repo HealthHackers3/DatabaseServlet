@@ -3,6 +3,7 @@ import api.auth.postAuthMap;
 import api.img.postImgMap;
 import api.interfaces.apiCommandHandler;
 import api.debug.postSQLRequest;
+import api.user.post.postPostMap;
 import api.user.post.postUserMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,7 @@ public class postHandler {
         commandHandlers.put("img", new postImgMap(commands));
         commandHandlers.put("auth", new postAuthMap(commands));
         commandHandlers.put("users", new postUserMap(commands));
+        commandHandlers.put("post", new postPostMap(commands));
     }
 
     //execute command

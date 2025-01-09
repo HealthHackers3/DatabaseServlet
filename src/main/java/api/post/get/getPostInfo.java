@@ -1,4 +1,4 @@
-package api.post;
+package api.post.get;
 
 import api.interfaces.apiCommandHandler;
 

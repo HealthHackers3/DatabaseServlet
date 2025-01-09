@@ -19,9 +19,10 @@ public class postUsername implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
+        System.out.println("doing");
         try {
             String username = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            centralisedLogger.log("Command: " + Arrays.toString(commands));
+            centralisedLogger.log("Updating user "+ commands[1] + " to : " + username);
             s.execute("UPDATE lusers SET username = '" + username + "' WHERE user_id = " + commands[1]);
         }catch(SQLException e){
             handleError(resp, "Invalid request", e);
