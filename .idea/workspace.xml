@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.4&#10;image folder debug" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.5&#10;image folder debug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/img/postImgMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/img/postImgMap.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +76,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -407,7 +411,7 @@
       <workItem from="1735339396636" duration="1959000" />
       <workItem from="1735762812064" duration="6368000" />
       <workItem from="1735839962600" duration="35733000" />
-      <workItem from="1736434029291" duration="29757000" />
+      <workItem from="1736434029291" duration="32180000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -769,7 +773,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736526500679</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Servlet V5.5&#10;image folder debug">
+      <option name="closed" value="true" />
+      <created>1736526814728</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1736526814728</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -787,7 +799,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NS V1.6.5" />
     <MESSAGE value="NS V1.6.6" />
     <MESSAGE value="NS V1.6.7" />
     <MESSAGE value="NS V1.6.8" />
@@ -812,6 +823,7 @@
     <MESSAGE value="Servlet V5.2&#10;image folder debug" />
     <MESSAGE value="Servlet V5.3&#10;image folder debug" />
     <MESSAGE value="Servlet V5.4&#10;image folder debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.4&#10;image folder debug" />
+    <MESSAGE value="Servlet V5.5&#10;image folder debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.5&#10;image folder debug" />
   </component>
 </project>
