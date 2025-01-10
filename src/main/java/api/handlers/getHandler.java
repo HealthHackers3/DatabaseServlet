@@ -2,6 +2,7 @@ package api.handlers;
 
 import api.debug.getErrorConsole;
 import api.debug.getRefreshAllTables;
+import api.debug.getRefreshFiles;
 import api.interfaces.apiCommandHandler;
 import api.img.getImgMap;
 import api.post.get.getPostMap;
@@ -34,6 +35,7 @@ public class getHandler {
         commandHandlers.put("post", new getPostMap(commands));
         commandHandlers.put("console", new getErrorConsole());
         commandHandlers.put("refreshAll", new getRefreshAllTables());
+        commandHandlers.put("refreshFiles", new getRefreshFiles());
 
 
     }
