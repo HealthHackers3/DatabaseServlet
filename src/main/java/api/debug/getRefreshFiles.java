@@ -25,13 +25,18 @@ public class getRefreshFiles implements apiCommandHandler {
         centralisedLogger.log("File seperator: " + File.separator);
         centralisedLogger.log("uploadDirectory: " + UPLOAD_DIRECTORY);
         File uploadDir = new File(uploadPath);
-        try {
-            ensureDirectoryExists(uploadPath);
-            ensureDirectoryExists(uploadPath + "/fullResPostImages");
-            ensureDirectoryExists(uploadPath + "/thumbnailPostImages");
-        } catch (IOException e) {
-            centralisedLogger.log("Error ensuring directory exists: " + e.getMessage());
-            throw new RuntimeException(e);
+//        try {
+//            ensureDirectoryExists(uploadPath);
+//            ensureDirectoryExists(uploadPath + "/fullResPostImages");
+//            ensureDirectoryExists(uploadPath + "/thumbnailPostImages");
+//        } catch (IOException e) {
+//            centralisedLogger.log("Error ensuring directory exists: " + e.getMessage());
+//            throw new RuntimeException(e);
+//        }
+        if (uploadDir.canWrite()) {
+            System.out.println("Write permission is granted for: " + uploadPath);
+        } else {
+            System.out.println("Write permission is NOT granted for: " + uploadPath);
         }
         File[] files = uploadDir.listFiles();
 
