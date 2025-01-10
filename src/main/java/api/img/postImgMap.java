@@ -171,7 +171,7 @@ class postPostImage implements apiCommandHandler {
                         imageId = rs.getInt("image_id");
                     }
                     String fileName = "[" + imageId + "][" + postId + "][" + orderIndex +"]"+FilenameUtils.getName(item.getName());
-                    String filePath = uploadPath + "\\fullResPostImages" + File.separator + fileName;
+                    String filePath = uploadPath  + File.separator +  "fullResPostImages" + File.separator + fileName;
                     s.executeUpdate("UPDATE Lpost_images SET image_path = '" + filePath + "' WHERE image_id = '" + imageId + "'");
                     File uploadedFile = new File(filePath);
                     item.write(uploadedFile); // Save the file
@@ -197,9 +197,8 @@ class postPostImage implements apiCommandHandler {
     public static void insertThumbnails(String uploadPath, int fullResId, int postId, String fileName, Statement s) throws SQLException, IOException {
         int thumbnailHeight = 500;
         int thumbnailWidth = 500;
-
         try {
-            File inputFile = new File(uploadPath + "\\fullResPostImages" + File.separator + fileName);
+            File inputFile = new File(uploadPath + File.separator + "fullResPostImages" + File.separator + fileName);
             System.out.println(inputFile.getAbsoluteFile());
             BufferedImage originalImage = ImageIO.read(inputFile);
 
