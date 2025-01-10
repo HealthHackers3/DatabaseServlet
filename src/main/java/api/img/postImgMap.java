@@ -91,8 +91,10 @@ class postPostImage implements apiCommandHandler {
 //        String projectPath = System.getProperty("user.dir").replace("\\", "/");
          String projectPath = "/var/www/uploads";
         String uploadPath = projectPath + File.separator + UPLOAD_DIRECTORY;
+        centralisedLogger.log("projectPath: " + projectPath);
         centralisedLogger.log("Upload path: " + uploadPath);
         centralisedLogger.log("File seperator: " + File.separator);
+        centralisedLogger.log("uploadDirectory: " + UPLOAD_DIRECTORY);
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             try {
