@@ -88,15 +88,19 @@ class postPostImage implements apiCommandHandler {
         upload.setSizeMax(MAX_FILE_SIZE); // Set max file size
 
         // Define the upload path relative to your project folder
-        String projectPath = System.getProperty("user.dir").replace("\\", "/");
-         //String projectPath = "/var/www/uploads";
+//        String projectPath = System.getProperty("user.dir").replace("\\", "/");
+         String projectPath = "/var/www/uploads";
         String uploadPath = projectPath + File.separator + UPLOAD_DIRECTORY;
         centralisedLogger.log("Upload path: " + uploadPath);
         centralisedLogger.log("File seperator: " + File.separator);
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
-            centralisedLogger.log("Making a new file");
-            uploadDir.mkdirs();
+            try {
+                centralisedLogger.log("Making a new file");
+                uploadDir.mkdirs();
+            }catch (Exception e){
+                centralisedLogger.log(e.getMessage());
+            }
         }
         Map<Integer, Map<String, String>> imageData = new HashMap<>();
         ArrayList<FileItem> imageSaveData = new ArrayList<>();
