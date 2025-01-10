@@ -9,6 +9,9 @@ public class errorHandler {
         System.out.println(e);
         String logEntry = "Error: " + errorMessage + " | Exception: " + e;
         centralisedLogger.log(logEntry);
+        errorMessage = errorMessage.replace(":", "->");
+        errorMessage = errorMessage.replace("\"", "|");
+        errorMessage = errorMessage.replace("\n", " ");
         resp.getWriter().write("{\"error\": \"" + errorMessage + "\"}");
     }
 }
