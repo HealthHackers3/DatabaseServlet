@@ -53,6 +53,7 @@ public class Servlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         resp.setContentType("application/json");
         try (Connection conn = dataSource.getConnection(); Statement s = conn.createStatement()) {
             String[] pathComponents = req.getPathInfo().substring(1).split("/");
@@ -69,6 +70,7 @@ public class Servlet extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         resp.setContentType("application/json");
         try (Connection conn = dataSource.getConnection(); Statement s = conn.createStatement()) {
             String[] pathComponents = req.getPathInfo().substring(1).split("/");
