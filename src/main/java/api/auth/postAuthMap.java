@@ -15,7 +15,7 @@ public class postAuthMap implements apiCommandHandler {
 
     public postAuthMap(String[] commands){
         this.commands = commands;
-        userInfoCommands.put("register", new postLogin(commands));
+        userInfoCommands.put("register", new postNewUser(commands));
         userInfoCommands.put("login", new postLogin(commands));
     }
 

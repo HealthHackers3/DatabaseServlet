@@ -47,10 +47,11 @@ public class Servlet_Local extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         resp.setContentType("application/json"); //Respond in JSON format
         try{
             String[] pathComponents = req.getPathInfo().substring(1).split("/");//Remove the first character (always '/') then split an array at every subsequent '/' to get the command specifics
-            try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "guardspine"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
+            try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "Hello"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
                 System.out.println("Executing GET query at: " + Arrays.toString(pathComponents));
                 getHandler gH = new getHandler(pathComponents, req, resp, s);//create new getHandler to do deal with the get requeset.
                 gH.execute();
@@ -67,10 +68,10 @@ public class Servlet_Local extends HttpServlet {
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
+        resp.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         resp.setContentType("application/json"); //Respond in JSON format
         String[] pathComponents = req.getPathInfo().substring(1).split("/");//Remove the first character (always '/') then split an array at every subsequent '/' to get the command specifics
-        try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "guardspine"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
+        try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "Hello"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
             System.out.println("Executing POST query at: " + Arrays.toString(pathComponents));
             postHandler pH = new postHandler(pathComponents, req, resp, s);//create new getHandler to do deal with the get requeset.
             pH.execute();

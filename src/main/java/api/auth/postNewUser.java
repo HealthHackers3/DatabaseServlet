@@ -80,12 +80,15 @@ public class postNewUser implements apiCommandHandler {
                     centralisedLogger.log("{\"success\": \"User added successfully\"}");
                     resp.getWriter().write("{\"message\": \"User added successfully\"}");
                 } else {
+                    resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                     handleError(resp, "{\"error\": \"Failed to add user\"}", null);
                 }
             }
         } catch (SQLException e) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             handleError(resp, "{\"error\": \"Database error: " + e.getMessage() + "\"}", e);
         } catch (Exception e) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             handleError(resp, "{\"error\": \"Unexpected error: " + e.getMessage() + "\"}", e);
         }
     }
