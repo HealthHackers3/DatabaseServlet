@@ -3,7 +3,7 @@ name: Deploy to Tsuru
 on:
   push:
     branches:
-      - ServletV3.0
+      - ServletV5-(Ready-to-deploy)
 
 jobs:
   deploy:

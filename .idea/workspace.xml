@@ -5,40 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="adding new post functionality">
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostCoverImgID.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostListAZ.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostListDateAsc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostListDateDesc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostListZA.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/api/debug/getRefreshAllTables.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/cfe35e4c-ac19-40b8-a33f-c5320c1fa6c0/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/auth/postAuthMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/auth/postAuthMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/auth/postLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/auth/postLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/RedundantServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Servlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/api/handlers/getHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/handlers/getHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/img/postImgMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/img/postImgMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/post/get/getPostInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/post/get/getPostInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/post/post/postNewPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/post/post/postNewPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/user/get/getUserMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/user/get/getUserMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/user/post/postUserMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/user/post/postUserMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[32][1][1]cancercell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[33][1][2]plantcell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[34][1][1]cancercell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[35][1][2]plantcell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[36][1][0]eletronmicr.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[37][1][1]ultrastructurealtake.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[38][1][1]mitochondria-visible-under-light-microscope-600nw-2442767879.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[39][1][1]mitochondria-visible-under-light-microscope-600nw-2442767879.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/fullResPostImages/[40][1][1]ultrastructurealtake.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[32][1][1]cancercell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[33][1][2]plantcell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[34][1][1]cancercell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[35][1][2]plantcell.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[36][1][0]eletronmicr.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[37][1][1]ultrastructurealtake.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/uploads/thumbnailPostImages/thumbnail_[40][1][1]ultrastructurealtake.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/Servlet_Local.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +78,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ServletV3.0" />
+        <entry key="$PROJECT_DIR$" value="ServletV3.0-Pretty" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -137,39 +111,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Gradle.Build HHDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [:Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;ServletV3.0-Pretty&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sctcl/Downloads/SamCliffordTest2-main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.Build HHDatabase.executor": "Run",
+    "Gradle.HHDatabase [:Main.main()].executor": "Run",
+    "Gradle.HHDatabase [:org.example.Main.main()].executor": "Run",
+    "Gradle.HHDatabase [appRestart].executor": "Run",
+    "Gradle.HHDatabase [appStartWar].executor": "Run",
+    "Gradle.HHDatabase [appStart].executor": "Run",
+    "Gradle.HHDatabase [appStop].executor": "Run",
+    "Gradle.HHDatabase [build].executor": "Run",
+    "Gradle.HHDatabase [war].executor": "Run",
+    "Gradle.HHDatabase.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "ServletV5-(Ready-to-deploy)",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/sctcl/Downloads/SamCliffordTest2-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
+      "PostgreSQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -439,7 +416,7 @@
       <workItem from="1735339396636" duration="1959000" />
       <workItem from="1735762812064" duration="6368000" />
       <workItem from="1735839962600" duration="35733000" />
-      <workItem from="1736434029291" duration="21753000" />
+      <workItem from="1736434029291" duration="23644000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -729,7 +706,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736447049292</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="adding new post functionality">
+      <option name="closed" value="true" />
+      <created>1736518601255</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1736518601255</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
