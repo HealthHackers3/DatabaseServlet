@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="ServletV5.0" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.1&#10;image folder debug">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -407,7 +409,7 @@
       <workItem from="1735339396636" duration="1959000" />
       <workItem from="1735762812064" duration="6368000" />
       <workItem from="1735839962600" duration="35733000" />
-      <workItem from="1736434029291" duration="27613000" />
+      <workItem from="1736434029291" duration="28335000" />
     </task>
     <task id="LOCAL-00001" summary="newservletcommit V1.0">
       <option name="closed" value="true" />
@@ -737,7 +739,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736523971701</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Servlet V5.1&#10;image folder debug">
+      <option name="closed" value="true" />
+      <created>1736524780671</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1736524780671</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -755,7 +765,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NS V1.3" />
     <MESSAGE value="NS V1.4" />
     <MESSAGE value="NS V1.5" />
     <MESSAGE value="NS V1.6.4" />
@@ -780,6 +789,7 @@
     <MESSAGE value="adding new post functionality" />
     <MESSAGE value="getting ready for git deployment" />
     <MESSAGE value="ServletV5.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="ServletV5.0" />
+    <MESSAGE value="Servlet V5.1&#10;image folder debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.1&#10;image folder debug" />
   </component>
 </project>

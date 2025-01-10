@@ -88,7 +88,8 @@ class postPostImage implements apiCommandHandler {
         upload.setSizeMax(MAX_FILE_SIZE); // Set max file size
 
         // Define the upload path relative to your project folder
-        String projectPath = System.getProperty("user.dir"); // Base directory of the project
+        String projectPath = System.getProperty("user.dir").replace("\\", "/");
+         //String projectPath = "/var/www/uploads";
         String uploadPath = projectPath + File.separator + UPLOAD_DIRECTORY;
         centralisedLogger.log("Upload path: " + uploadPath);
         centralisedLogger.log("File seperator: " + File.separator);
