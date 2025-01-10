@@ -90,8 +90,11 @@ class postPostImage implements apiCommandHandler {
         // Define the upload path relative to your project folder
         String projectPath = System.getProperty("user.dir"); // Base directory of the project
         String uploadPath = projectPath + File.separator + UPLOAD_DIRECTORY;
+        centralisedLogger.log("Upload path: " + uploadPath);
+        centralisedLogger.log("File seperator: " + File.separator);
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
+            centralisedLogger.log("Making a new file");
             uploadDir.mkdirs();
         }
         Map<Integer, Map<String, String>> imageData = new HashMap<>();
@@ -172,6 +175,7 @@ class postPostImage implements apiCommandHandler {
                     }
                     String fileName = "[" + imageId + "][" + postId + "][" + orderIndex +"]"+FilenameUtils.getName(item.getName());
                     String filePath = uploadPath  + File.separator +  "fullResPostImages" + File.separator + fileName;
+                    centralisedLogger.log("File path: " + filePath);
                     s.executeUpdate("UPDATE Lpost_images SET image_path = '" + filePath + "' WHERE image_id = '" + imageId + "'");
                     File uploadedFile = new File(filePath);
                     item.write(uploadedFile); // Save the file
