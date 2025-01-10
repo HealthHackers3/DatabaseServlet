@@ -34,9 +34,9 @@ public class getRefreshFiles implements apiCommandHandler {
 //            throw new RuntimeException(e);
 //        }
         if (uploadDir.canWrite()) {
-            System.out.println("Write permission is granted for: " + uploadPath);
+            centralisedLogger.log("Write permission is granted for: " + uploadPath);
         } else {
-            System.out.println("Write permission is NOT granted for: " + uploadPath);
+            centralisedLogger.log("Write permission is NOT granted for: " + uploadPath);
         }
         File[] files = uploadDir.listFiles();
 
