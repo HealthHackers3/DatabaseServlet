@@ -52,7 +52,7 @@ class postPostImage implements apiCommandHandler {
     private static final int MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
     private static final int MAX_MEM_SIZE = 4 * 1024 * 1024;   // 4MB
 
-    private static final String UPLOAD_DIRECTORY = "var\\uploads"; // Directory to store images
+    private static final String UPLOAD_DIRECTORY = "var/uploads"; // Directory to store images
     private static final Logger log = LoggerFactory.getLogger(postPostImage.class);
     String[] commands;
     public postPostImage(String[] commands) {
