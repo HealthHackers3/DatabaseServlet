@@ -14,14 +14,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class getUserMap implements apiCommandHandler {
-    private final Map<String, apiCommandHandler> userInfoCommands = new HashMap<>();
+    private final Map<String, apiCommandHandler> getUserCommands = new HashMap<>();
     private final String[] commands;
 
     public getUserMap(String[] commands){
         this.commands = commands;
-        userInfoCommands.put("username", new getUsername(commands));
-        userInfoCommands.put("email", new getEmail(commands));
-        userInfoCommands.put("date", new getCreatedDate(commands));
+        getUserCommands.put("username", new getUsername(commands));
+        getUserCommands.put("email", new getEmail(commands));
+        getUserCommands.put("date", new getCreatedDate(commands));
     }
 
     @Override
@@ -35,7 +35,7 @@ public class getUserMap implements apiCommandHandler {
         }
 
         try{
-            userInfoCommands.get(commands[2]).handle(req, resp, s);
+            getUserCommands.get(commands[2]).handle(req, resp, s);
         }catch (Exception e){
             handleError(resp, "Invalid User Field", e);
             return;

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.sql.*;
 import java.util.List;
+import java.util.Objects;
 
 public class postNewPost implements apiCommandHandler {
     private final String[] commands;
@@ -98,25 +99,36 @@ public class postNewPost implements apiCommandHandler {
 
                     assert category_id != null;
                     assert otherIds != null;
+                    System.out.println(category_id);
+                    System.out.println(otherIds[0]);
                     System.out.println(category_user_picked);
-                    if(Integer.parseInt(category_id) != otherIds[0] && category_user_picked != null){
+                    System.out.println("============");
+                    System.out.println(cell_type_id);
+                    System.out.println(otherIds[1]);
+                    System.out.println(cell_type_user_picked);
+                    System.out.println("============");
+                    System.out.println(image_modality_id);
+                    System.out.println(otherIds[2]);
+                    System.out.println(image_modality_user_picked);
+                    System.out.println("============");
+                    if(Integer.parseInt(category_id) != otherIds[0] && !Objects.equals(category_user_picked, "")){
                         throw new Exception("Only use user picked when category is other");
                     }
-                    else if(Integer.parseInt(category_id) == otherIds[0] && category_user_picked == null){
+                    else if(Integer.parseInt(category_id) == otherIds[0] && Objects.equals(category_user_picked, "")){
                         throw new Exception("Requires user picked when category is other");
                     }
                     assert cell_type_id != null;
-                    if(Integer.parseInt(cell_type_id) != otherIds[1] && cell_type_user_picked != null){
+                    if(Integer.parseInt(cell_type_id) != otherIds[1] && !Objects.equals(cell_type_user_picked, "")){
                         throw new Exception("Only use user picked when cell_type is other");
                     }
-                    else if(Integer.parseInt(cell_type_id) == otherIds[1] && cell_type_user_picked == null){
+                    else if(Integer.parseInt(cell_type_id) == otherIds[1] && Objects.equals(cell_type_user_picked, "")){
                         throw new Exception("Requires user picked when cell_type is other");
                     }
                     assert image_modality_id != null;
-                    if(Integer.parseInt(image_modality_id) != otherIds[2] && image_modality_user_picked != null){
+                    if(Integer.parseInt(image_modality_id) != otherIds[2] && !Objects.equals(image_modality_user_picked, "")){
                         throw new Exception("Only use user picked when image_modality is other");
                     }
-                    else if(Integer.parseInt(image_modality_id) == otherIds[2] && image_modality_user_picked == null){
+                    else if(Integer.parseInt(image_modality_id) == otherIds[2] && Objects.equals(image_modality_user_picked, "")){
                         throw new Exception("Requires user picked when image_modality is other");
                     }
 

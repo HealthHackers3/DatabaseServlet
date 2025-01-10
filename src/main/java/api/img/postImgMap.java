@@ -200,6 +200,7 @@ class postPostImage implements apiCommandHandler {
 
         try {
             File inputFile = new File(uploadPath + "\\fullResPostImages" + File.separator + fileName);
+            System.out.println(inputFile.getAbsoluteFile());
             BufferedImage originalImage = ImageIO.read(inputFile);
 
             int originalWidth = originalImage.getWidth();

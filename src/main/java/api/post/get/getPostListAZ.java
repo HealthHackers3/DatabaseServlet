@@ -7,15 +7,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.Statement;
 
-public class getPostInfo implements apiCommandHandler {
+public class getPostListAZ implements apiCommandHandler {
     private final String[] commands;
-    public getPostInfo(String[] commands){
+    public getPostListAZ(String[] commands){
         this.commands = commands;
     }
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
-        s.execute("SELECT * FROM lposts WHERE post_id = " + commands[2]);
+        s.execute("SELECT post_id FROM lposts ORDER BY post_name ASC");
         statement2Json(req,resp,s);
     }
 }

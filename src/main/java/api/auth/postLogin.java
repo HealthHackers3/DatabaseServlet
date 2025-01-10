@@ -29,18 +29,18 @@ public class postLogin implements apiCommandHandler {
         resp.setContentType("application/json");
 
         try {
-            String username = req.getParameter("username");
+            String email = req.getParameter("email");
             String password = req.getParameter("password");
 
-            if (username == null || password == null) {
+            if (email == null || password == null) {
                 resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 resp.getWriter().write("{\"error\": \"Missing username or password\"}");
                 return;
             }
 
-            String sql = "SELECT user_id, password FROM lusers WHERE username = ?";
+            String sql = "SELECT user_id, password FROM lusers WHERE email = ?";
             try (PreparedStatement ps = s.getConnection().prepareStatement(sql)) {
-                ps.setString(1, username);
+                ps.setString(1, email);
                 try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
                         int userId = rs.getInt("user_id");
@@ -66,7 +66,7 @@ public class postLogin implements apiCommandHandler {
                             sessionCookie.setPath("/");
                             resp.addCookie(sessionCookie);
 
-                            centralisedLogger.log("User authenticated successfully: " + username);
+                            centralisedLogger.log("User authenticated successfully: " + email);
                             resp.getWriter().write("{\"message\": \"Login successful\", \"userId\": " + userId + "}");
                         } else {
                             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

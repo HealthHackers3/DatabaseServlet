@@ -3,6 +3,7 @@ package api.handlers;
 import api.debug.getErrorConsole;
 import api.interfaces.apiCommandHandler;
 import api.img.getImgMap;
+import api.post.get.getPostMap;
 import api.user.get.getUserMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ public class getHandler {
         //define get commands commands
         commandHandlers.put("users", new getUserMap(commands));
         commandHandlers.put("img", new getImgMap(commands));
+        commandHandlers.put("post", new getPostMap(commands));
         commandHandlers.put("console", new getErrorConsole());
 
 
