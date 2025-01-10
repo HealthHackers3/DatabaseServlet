@@ -6,6 +6,7 @@ import util.centralisedLogger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.sql.Statement;
 
 public class getRefreshFiles implements apiCommandHandler {
@@ -24,7 +25,14 @@ public class getRefreshFiles implements apiCommandHandler {
         centralisedLogger.log("File seperator: " + File.separator);
         centralisedLogger.log("uploadDirectory: " + UPLOAD_DIRECTORY);
         File uploadDir = new File(uploadPath);
-
+        try {
+            ensureDirectoryExists(uploadPath);
+            ensureDirectoryExists(uploadPath + "/fullResPostImages");
+            ensureDirectoryExists(uploadPath + "/thumbnailPostImages");
+        } catch (IOException e) {
+            centralisedLogger.log("Error ensuring directory exists: " + e.getMessage());
+            throw new RuntimeException(e);
+        }
         File[] files = uploadDir.listFiles();
 
         if (!uploadDir.exists()) {
@@ -52,6 +60,21 @@ public class getRefreshFiles implements apiCommandHandler {
                     centralisedLogger.log("File: " + file.getName());
                 }
             }
+        }
+        resp.setContentType("application/json");
+        resp.getWriter().write("{\"message\": \"Directories verified and listed successfully\"}");
+
+    }
+    public static void ensureDirectoryExists(String path) throws IOException {
+        File directory = new File(path);
+        if (!directory.exists()) {
+            if (directory.mkdirs()) {
+                centralisedLogger.log("Directory created: " + path);
+            } else {
+                throw new IOException("Failed to create directory: " + path);
+            }
+        } else {
+            centralisedLogger.log("Directory already exists: " + path);
         }
     }
 }
