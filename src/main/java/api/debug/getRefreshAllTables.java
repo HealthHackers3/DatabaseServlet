@@ -134,6 +134,27 @@ public class getRefreshAllTables implements apiCommandHandler {
                     "ON CONFLICT (category_name) DO NOTHING; " +
                     "END LOOP; " +
                     "END $$;");
+            // Inserting cell types
+            s.execute("DO $$ DECLARE " +
+                    "cell_type_list TEXT := 'Other,Adipocyte,Basophil,Cardiomyocyte,Chondrocyte,Erythrocyte,Fibroblast,Hepatocyte,Keratinocyte,Langerhans cell,Macrophage,Mast cell,Melanocyte,Monocyte,Myocyte(skeletal),Myocyte(smooth),Myocyte(cardiac),Neutrophil,Osteoblast,Osteoclast,Pancreatic beta cell,Platelet,Schwann cell,T-cell,B-cell,Natural killer cell,Spermatocyte,Oocyte,Retinal ganglion cell,Cone cell,Rod cell,Ependymal cell,Endothelial cell,Goblet cell,Granulocyte,Thrombocyte,Lymphocyte,Microglial cell,Satellite cell,Parenchyma cell,Collenchyma cell,Sclerenchyma cell,Guard cell,Companion cell,Sieve-tube element,Tracheid,Vessel element,Xylem fiber,Phloem fiber,Cork cell,Epidermal cell,Root hair cell,Palisade mesophyll cell,Spongy mesophyll cell,Chlorenchyma cell,Endodermal cell,Meristematic cell,Coccus,Bacillus,Spirillum,Spirochete,Vibrio,Filamentous bacteria,Actinomycete,Protist(amoeboid),Protist(flagellate),Protist(ciliate),Fungi(hyphal cell),Fungi(yeast cell),Fungi(spore-forming cell),DNA virus,RNA virus,Retrovirus,Bacteriophage,Lipid-enveloped virus,Non-enveloped virus,Icosahedral virus,Helical virus,Complex virus,Satellite virus,Prion-like particles,Archaea(methanogen),Archaea(halophile),Alveolar cell,Intestinal enterocyte,Bundle sheath cell,Transfer cell,Reproductive cell(egg cell),Reproductive cell(pollen cell),Oligodendrocyte,Astrocyte';" +
+                    "cell_type_item TEXT; " +
+                    "BEGIN " +
+                    "FOR cell_type_item IN SELECT unnest(string_to_array(cell_type_list, ',')) LOOP " +
+                    "INSERT INTO Lcell_types (cell_type_name) VALUES (cell_type_item) " +
+                    "ON CONFLICT (cell_type_name) DO NOTHING; " +
+                    "END LOOP; " +
+                    "END $$;");
+
+// Inserting image modalities
+            s.execute("DO $$ DECLARE " +
+                    "image_modality_list TEXT := 'Other, Fluorescence microscopy (live-cell),Fluorescence microscopy (fixed-cell),Confocal microscopy,Two-photon microscopy,Super-resolution microscopy (STED),Super-resolution microscopy (PALM/STORM),Phase-contrast microscopy,Differential interference contrast (DIC) microscopy,Raman microscopy,Fluorescence in situ hybridization (FISH),Live-cell imaging (time-lapse),High-content screening imaging,Fluorescent lifetime imaging (FLIM),Total internal reflection fluorescence (TIRF) microscopy,Structured illumination microscopy (SIM),Light-sheet microscopy,Spinning disk confocal microscopy,Widefield fluorescence microscopy,Multiphoton microscopy,Optical coherence tomography (OCT),Electron microscopy (SEM),Electron microscopy (TEM),Cryo-electron microscopy (Cryo-EM),Dynamic light scattering (DLS),Flow cytometry (imaging),Mass cytometry (imaging),Label-free microscopy (holographic),Atomic force microscopy (AFM),Spectral imaging (hyperspectral)';" +
+                    "image_modality_item TEXT; " +
+                    "BEGIN " +
+                    "FOR image_modality_item IN SELECT unnest(string_to_array(image_modality_list, ',')) LOOP " +
+                    "INSERT INTO Limage_modalities(image_modality_name) VALUES (image_modality_item) " +
+                    "ON CONFLICT (image_modality_name) DO NOTHING; " +
+                    "END LOOP; " +
+                    "END $$;");
 
             // Success response
             resp.setContentType("application/json");
