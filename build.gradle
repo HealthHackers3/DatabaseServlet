@@ -27,7 +27,6 @@ tasks.register('stage'){
 build.mustRunAfter clean
 
 dependencies {
-    // to include the servlet libraries
     implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
@@ -44,6 +43,8 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.4.11' // Logback for SLF4J
     implementation 'org.mindrot:jbcrypt:0.4'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'software.amazon.awssdk:s3:2.29.49'
+
 
 }
 test {
