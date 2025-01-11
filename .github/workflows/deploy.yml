@@ -30,6 +30,10 @@ jobs:
         run: |
           tsuru target-add default $TSURU_HOST -s
 
+      - name: Set Environment Variables
+        run: |
+          tsuru env-set AWS_S3_ACCESS_KEY=${{ secrets.AWS_S3_ACCESS_KEY }} AWS_S3_SECRET_KEY=${{ secrets.AWS_S3_SECRET_KEY }} --app bioeng-hhack-app
+
       - name: Rename war file
         run: |
           mv ./build/libs/HHDatabase-1.0-SNAPSHOT.war ./ROOT.war
