@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.8&#10;image folder debug">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/debug/getRefreshFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/debug/getRefreshFiles.java" afterDir="false" />
-    </list>
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.9&#10;image folder debug" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -411,15 +408,7 @@
       <workItem from="1735339396636" duration="1959000" />
       <workItem from="1735762812064" duration="6368000" />
       <workItem from="1735839962600" duration="35733000" />
-      <workItem from="1736434029291" duration="37320000" />
-    </task>
-    <task id="LOCAL-00004" summary="NS V1.3">
-      <option name="closed" value="true" />
-      <created>1733769119673</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1733769119673</updated>
+      <workItem from="1736434029291" duration="37996000" />
     </task>
     <task id="LOCAL-00005" summary="NS V1.3">
       <option name="closed" value="true" />
@@ -805,7 +794,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736550897040</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Servlet V5.9&#10;image folder debug">
+      <option name="closed" value="true" />
+      <created>1736553015834</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1736553015834</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -823,7 +820,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NS V1.7" />
     <MESSAGE value="NS V1.8" />
     <MESSAGE value="NS V1.9" />
     <MESSAGE value="NS V1.91" />
@@ -848,6 +844,7 @@
     <MESSAGE value="Servlet V5.6&#10;image folder debug" />
     <MESSAGE value="Servlet V5.7&#10;image folder debug" />
     <MESSAGE value="Servlet V5.8&#10;image folder debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.8&#10;image folder debug" />
+    <MESSAGE value="Servlet V5.9&#10;image folder debug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.9&#10;image folder debug" />
   </component>
 </project>
