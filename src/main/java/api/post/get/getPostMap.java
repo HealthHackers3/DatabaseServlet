@@ -26,6 +26,9 @@ public class getPostMap implements apiCommandHandler {
         getPostCommands.put("coverImgId", new getPostCoverImgID(commands));
         getPostCommands.put("info", new getPostInfo(commands));
         getPostCommands.put("likestatus", new getLikeStatus(commands));
+        getPostCommands.put("getcategories", new getCategories());
+        getPostCommands.put("getcelltypes", new getCellTypes());
+        getPostCommands.put("getimagemodalities", new getImageModalities());
 
     }
     @Override
