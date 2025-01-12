@@ -1,7 +1,9 @@
-package api.user.post;
+package api.post.post;
 
 import api.interfaces.apiCommandHandler;
+import api.post.post.postLike;
 import api.post.post.postNewPost;
+import api.post.post.postUnlike;
 import api.user.get.getCreatedDate;
 import api.user.get.getEmail;
 import api.user.get.getUsername;
@@ -24,6 +26,8 @@ public class postPostMap implements apiCommandHandler {
     public postPostMap(String[] commands){
         this.commands = commands;
         userInfoCommands.put("newpost", new postNewPost(commands));
+        userInfoCommands.put("like", new postLike(commands));
+        userInfoCommands.put("unlike", new postUnlike(commands));
     }
 
     @Override

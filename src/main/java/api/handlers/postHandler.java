@@ -3,7 +3,7 @@ import api.auth.postAuthMap;
 import api.img.postImgMap;
 import api.interfaces.apiCommandHandler;
 import api.debug.postSQLRequest;
-import api.user.post.postPostMap;
+import api.post.post.postPostMap;
 import api.user.post.postUserMap;
 
 import javax.servlet.http.HttpServletRequest;
