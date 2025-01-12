@@ -103,7 +103,7 @@ class postPostImage implements apiCommandHandler {
                 }
             }
 
-            uploadImagesToS3(imageData, imageSaveData, Integer.parseInt(commands[2]), s, resp);
+            uploadImagesToS3(imageData, imageSaveData, s, resp);
 
         } catch (FileUploadException e) {
             handleError(resp, "{\"error\": \"File upload failed\"}", e);
@@ -112,7 +112,7 @@ class postPostImage implements apiCommandHandler {
         }
     }
 
-    private void uploadImagesToS3(Map<Integer, Map<String, String>> imageData, ArrayList<FileItem> imageSaveData, int postId, Statement s, HttpServletResponse resp) throws SQLException, IOException {
+    private void uploadImagesToS3(Map<Integer, Map<String, String>> imageData, ArrayList<FileItem> imageSaveData, Statement s, HttpServletResponse resp) throws SQLException, IOException {
         S3Client s3Client = S3Client.builder()
                 .region(REGION)
                 .credentialsProvider(StaticCredentialsProvider.create(AwsBasicCredentials.create(ACCESS_KEY, SECRET_KEY)))
@@ -132,7 +132,7 @@ class postPostImage implements apiCommandHandler {
                         imageId = rs.getInt("image_id");
                     }
                 }
-                String s3Key = "uploads/fullResPostImages/" + "["+imageId + "][" + postId + "][" + orderIndex + "]" + FilenameUtils.getName(item.getName());
+                String s3Key = "uploads/fullResPostImages/" + "["+imageId + "][" + orderIndex + "]" + FilenameUtils.getName(item.getName());
                 s.executeUpdate("UPDATE Lpost_images SET image_path = '" + s3Key + "' WHERE image_id = '" + imageId + "'");
                 // Upload the full-resolution image directly to S3
                 PutObjectRequest putObjectRequest = PutObjectRequest.builder()
@@ -141,8 +141,8 @@ class postPostImage implements apiCommandHandler {
                         .build();
 
                 s3Client.putObject(putObjectRequest, software.amazon.awssdk.core.sync.RequestBody.fromBytes(item.get()));
-                s3Key = "uploads/fullResPostImages/" + "[thumbnail]"+"["+imageId + "][" + postId + "][" + orderIndex + "]" + FilenameUtils.getName(item.getName());
-                createAndUploadThumbnail(item, imageId, postId, s3Key, s3Client, s);
+                s3Key = "uploads/fullResPostImages/" + "[thumbnail]"+"["+imageId + "][" + orderIndex + "]" + FilenameUtils.getName(item.getName());
+                createAndUploadThumbnail(item, imageId, s3Key, s3Client, s);
 
                 resp.setContentType("application/json");
                 resp.setCharacterEncoding("UTF-8");
@@ -155,7 +155,7 @@ class postPostImage implements apiCommandHandler {
         }
     }
 
-    private void createAndUploadThumbnail(FileItem item, int fullResId, int postId, String s3Key, S3Client s3Client, Statement s) throws SQLException, IOException {
+    private void createAndUploadThumbnail(FileItem item, int fullResId, String s3Key, S3Client s3Client, Statement s) throws SQLException, IOException {
         BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(item.get()));
         int maxThumbnailHeight = 250;
         int maxThumbnailWidth = 250;
@@ -194,8 +194,7 @@ class postPostImage implements apiCommandHandler {
 
         s3Client.putObject(thumbnailRequest, software.amazon.awssdk.core.sync.RequestBody.fromBytes(thumbnailBytes));
 
-        String insertSQL = "INSERT INTO Lpost_images_thumbnails (post_id, ref_image_id, image_path) VALUES (" +
-                postId + ", " + fullResId + ", '" + thumbnailKey + "')";
+        String insertSQL = "INSERT INTO Lpost_images_thumbnails (post_id, ref_image_id, image_path) VALUES (" +"-1"+ ", " + fullResId + ", '" + thumbnailKey + "')";
         s.execute(insertSQL);
     }
 
