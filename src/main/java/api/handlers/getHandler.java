@@ -4,7 +4,7 @@ import api.debug.getErrorConsole;
 import api.debug.getRefreshAllTables;
 import api.debug.getRefreshFiles;
 import api.interfaces.apiCommandHandler;
-import api.img.getImgMap;
+import api.img.get.getImgMap;
 import api.post.get.getPostMap;
 import api.user.get.getUserMap;
 

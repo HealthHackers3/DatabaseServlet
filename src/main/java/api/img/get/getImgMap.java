@@ -1,4 +1,4 @@
-package api.img;
+package api.img.get;
 
 import api.interfaces.apiCommandHandler;
 import org.slf4j.Logger;

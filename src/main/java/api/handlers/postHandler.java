@@ -1,6 +1,6 @@
 package api.handlers;
 import api.auth.postAuthMap;
-import api.img.postImgMap;
+import api.img.post.postImgMap;
 import api.interfaces.apiCommandHandler;
 import api.debug.postSQLRequest;
 import api.post.post.postPostMap;

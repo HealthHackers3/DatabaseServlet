@@ -1,4 +1,4 @@
-package api.img;
+package api.img.post;
 
 import api.interfaces.apiCommandHandler;
 import org.apache.commons.fileupload.FileItem;
@@ -14,7 +14,6 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import util.centralisedLogger;
-import util.errorHandler;
 import util.userAuthenticator;
 
 import javax.imageio.ImageIO;
@@ -38,6 +37,7 @@ public class postImgMap implements apiCommandHandler {
     public postImgMap(String[] commands) {
         this.commands = commands;
         userInfoCommands.put("upload", new postPostImage(commands));
+        userInfoCommands.put("settopost", new postSetToPost(commands));
     }
 
     @Override
@@ -125,7 +125,7 @@ class postPostImage implements apiCommandHandler {
             int imageId = 0;
             try {
                 String insertSQL = "INSERT INTO Lpost_images (post_id, order_index, image_file_name) VALUES (" +
-                        postId + ", " + orderIndex + ", '" + imageFileName + "') RETURNING image_id";
+                        "-1" + ", " + orderIndex + ", '" + imageFileName + "') RETURNING image_id";
 
                 try (ResultSet rs = s.executeQuery(insertSQL)) {
                     if (rs.next()) {
