@@ -36,6 +36,7 @@ public class postImgMap implements apiCommandHandler {
 
     public postImgMap(String[] commands) {
         this.commands = commands;
+        centralisedLogger.log("post image map");
         userInfoCommands.put("upload", new postPostImage(commands));
         userInfoCommands.put("settopost", new postSetToPost(commands));
     }
