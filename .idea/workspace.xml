@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.9&#10;image folder debug" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.10&#10;AWS volume system" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,42 +103,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Build HHDatabase.executor": "Run",
-    "Gradle.HHDatabase [:Main.main()].executor": "Run",
-    "Gradle.HHDatabase [:org.example.Main.main()].executor": "Run",
-    "Gradle.HHDatabase [appRestart].executor": "Run",
-    "Gradle.HHDatabase [appStartWar].executor": "Run",
-    "Gradle.HHDatabase [appStart].executor": "Run",
-    "Gradle.HHDatabase [appStop].executor": "Run",
-    "Gradle.HHDatabase [build].executor": "Run",
-    "Gradle.HHDatabase [war].executor": "Run",
-    "Gradle.HHDatabase.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "ServletV5-(Ready-to-deploy)",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sctcl/Downloads/SamCliffordTest2-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Build HHDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appRestart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStartWar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStart].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [appStop].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase [war].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.HHDatabase.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ServletV5-(Ready-to-deploy)&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sctcl/Downloads/SamCliffordTest2-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/SQL Dialect&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -409,14 +409,6 @@
       <workItem from="1735762812064" duration="6368000" />
       <workItem from="1735839962600" duration="35733000" />
       <workItem from="1736434029291" duration="37996000" />
-    </task>
-    <task id="LOCAL-00005" summary="NS V1.3">
-      <option name="closed" value="true" />
-      <created>1733769340753</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1733769340753</updated>
     </task>
     <task id="LOCAL-00006" summary="NS V1.3">
       <option name="closed" value="true" />
@@ -802,7 +794,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736553015834</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Servlet V5.10&#10;AWS volume system">
+      <option name="closed" value="true" />
+      <created>1736618183197</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1736618183197</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -820,7 +820,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NS V1.8" />
     <MESSAGE value="NS V1.9" />
     <MESSAGE value="NS V1.91" />
     <MESSAGE value="NS V2" />
@@ -845,6 +844,7 @@
     <MESSAGE value="Servlet V5.7&#10;image folder debug" />
     <MESSAGE value="Servlet V5.8&#10;image folder debug" />
     <MESSAGE value="Servlet V5.9&#10;image folder debug" />
-    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.9&#10;image folder debug" />
+    <MESSAGE value="Servlet V5.10&#10;AWS volume system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.10&#10;AWS volume system" />
   </component>
 </project>
