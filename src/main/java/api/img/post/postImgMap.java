@@ -146,7 +146,7 @@ class postPostImage implements apiCommandHandler {
 
                 resp.setContentType("application/json");
                 resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write("{\"message\": \"File uploaded successfully to S3\"}");
+                resp.getWriter().write("{\"image_id\": \"" + imageId+"\", \"message\": \"File uploaded successfully to S3\"}");
 
             } catch (Exception e) {
                 log.error("Error uploading to S3: ", e);
