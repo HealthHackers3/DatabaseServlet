@@ -3,6 +3,8 @@ package api.handlers;
 import api.debug.getErrorConsole;
 import api.interfaces.apiCommandHandler;
 import api.img.getImgMap;
+import api.post.delete.deletePost;
+import api.post.get.deletePostMap;
 import api.post.get.getPostMap;
 import api.user.get.getUserMap;
 
@@ -28,10 +30,7 @@ public class deleteHandler {
         this.s = s;
         this.commands = commandPath;
         //define get commands commands
-        commandHandlers.put("users", new getUserMap(commands));
-        commandHandlers.put("img", new getImgMap(commands));
-        commandHandlers.put("post", new getPostMap(commands));
-        commandHandlers.put("console", new getErrorConsole());
+        commandHandlers.put("post", new deletePostMap(commands));
 
 
     }

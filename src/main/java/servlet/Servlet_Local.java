@@ -1,5 +1,6 @@
 package servlet;
 
+import api.handlers.deleteHandler;
 import com.zaxxer.hikari.HikariDataSource;
 import api.handlers.getHandler;
 import org.slf4j.Logger;
@@ -90,8 +91,8 @@ public class Servlet_Local extends HttpServlet {
         String[] pathComponents = req.getPathInfo().substring(1).split("/");//Remove the first character (always '/') then split an array at every subsequent '/' to get the command specifics
         try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "guardspine"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
             System.out.println("Executing DELETE query at: " + Arrays.toString(pathComponents));
-            postHandler pH = new postHandler(pathComponents, req, resp, s);//create new getHandler to do deal with the get requeset.
-            pH.execute();
+            deleteHandler dH = new deleteHandler(pathComponents, req, resp, s);//create new getHandler to do deal with the get requeset.
+            dH.execute();
         } catch (SQLException e) {
             resp.getWriter().write("{\"error\": \"Issue connecting to PostgreSQL from server\"}");
         } catch (ServletException e) {
