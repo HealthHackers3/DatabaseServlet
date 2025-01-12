@@ -9,6 +9,8 @@ public class errorHandler {
         System.out.println(e);
         String logEntry = "Error: " + errorMessage + " | Exception: " + e;
         centralisedLogger.log(logEntry);
+        resp.setContentType("application/json");
+        resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
         resp.getWriter().write("{\"error\": \"" + errorMessage + "\"}");
     }
 }
