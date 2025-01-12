@@ -83,6 +83,24 @@ public class Servlet_Local extends HttpServlet {
         }
     }
 
+    @Override
+    public void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        resp.setContentType("application/json"); //Respond in JSON format
+        String[] pathComponents = req.getPathInfo().substring(1).split("/");//Remove the first character (always '/') then split an array at every subsequent '/' to get the command specifics
+        try (Connection conn = DriverManager.getConnection(dbUrl, "postgres", "guardspine"); Statement s = conn.createStatement()) { //attempt SQL Db connection with statement s for SQL queries
+            System.out.println("Executing DELETE query at: " + Arrays.toString(pathComponents));
+            postHandler pH = new postHandler(pathComponents, req, resp, s);//create new getHandler to do deal with the get requeset.
+            pH.execute();
+        } catch (SQLException e) {
+            resp.getWriter().write("{\"error\": \"Issue connecting to PostgreSQL from server\"}");
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 }
