@@ -30,12 +30,12 @@ jobs:
         run: |
           tsuru target-add default $TSURU_HOST -s
 
-      - name: Set Environment Variables
-        env:
-          TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
-        run: |
-          tsuru permission-list
-          tsuru env-set AWS_S3_ACCESS_KEY=${{ secrets.AWS_S3_ACCESS_KEY }} AWS_S3_SECRET_KEY=${{ secrets.AWS_S3_SECRET_KEY }} --app bioeng-hhack-app
+      # - name: Set Environment Variables
+      #   env:
+      #     TSURU_TOKEN: ${{ secrets.TSURU_TOKEN }}
+      #   run: |
+      #     tsuru permission-list
+      #     tsuru env-set AWS_S3_ACCESS_KEY=${{ secrets.AWS_S3_ACCESS_KEY }} AWS_S3_SECRET_KEY=${{ secrets.AWS_S3_SECRET_KEY }} --app bioeng-hhack-app
 
       - name: Rename war file
         run: |
