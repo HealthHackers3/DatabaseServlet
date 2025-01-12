@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.10&#10;AWS volume system" />
+    <list default="true" id="da9fe21c-35de-4c80-8c1a-084449644585" name="Changes" comment="Servlet V5.11.2&#10;with better upload handling">
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/img/post/postSetToPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/img/post/postSetToPost.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +100,9 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2prYf1tIzjHctKSyaKTFutYqXmj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -371,11 +375,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.HHDatabase [appStart]" />
         <item itemvalue="Gradle.HHDatabase [war]" />
         <item itemvalue="Gradle.HHDatabase [build]" />
         <item itemvalue="Gradle.HHDatabase [appStop]" />
         <item itemvalue="Gradle.HHDatabase [appStartWar]" />
+        <item itemvalue="Gradle.HHDatabase [appStart]" />
       </list>
     </recent_temporary>
   </component>
@@ -409,30 +413,6 @@
       <workItem from="1735762812064" duration="6368000" />
       <workItem from="1735839962600" duration="35733000" />
       <workItem from="1736434029291" duration="37996000" />
-    </task>
-    <task id="LOCAL-00006" summary="NS V1.3">
-      <option name="closed" value="true" />
-      <created>1733848297956</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1733848297956</updated>
-    </task>
-    <task id="LOCAL-00007" summary="NS V1.4">
-      <option name="closed" value="true" />
-      <created>1733852644286</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1733852644286</updated>
-    </task>
-    <task id="LOCAL-00008" summary="NS V1.5">
-      <option name="closed" value="true" />
-      <created>1733856264586</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1733856264586</updated>
     </task>
     <task id="LOCAL-00009" summary="NS V1.6.4">
       <option name="closed" value="true" />
@@ -802,7 +782,31 @@
       <option name="project" value="LOCAL" />
       <updated>1736618183197</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Servlet V5.11.1&#10;with better upload handling">
+      <option name="closed" value="true" />
+      <created>1736706290829</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1736706290829</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Servlet V5.11.2&#10;with better upload handling">
+      <option name="closed" value="true" />
+      <created>1736706800925</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1736706800925</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Servlet V5.11.2&#10;with better upload handling">
+      <option name="closed" value="true" />
+      <created>1736708442094</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1736708442094</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -820,8 +824,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="NS V1.9" />
-    <MESSAGE value="NS V1.91" />
     <MESSAGE value="NS V2" />
     <MESSAGE value="NS V2.1 using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
     <MESSAGE value="NS V2.1&#10;using hikari to manage connection pools&#10;hopefully eliminate the timeout errors that are the bane of my existence" />
@@ -845,6 +847,8 @@
     <MESSAGE value="Servlet V5.8&#10;image folder debug" />
     <MESSAGE value="Servlet V5.9&#10;image folder debug" />
     <MESSAGE value="Servlet V5.10&#10;AWS volume system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.10&#10;AWS volume system" />
+    <MESSAGE value="Servlet V5.11.1&#10;with better upload handling" />
+    <MESSAGE value="Servlet V5.11.2&#10;with better upload handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Servlet V5.11.2&#10;with better upload handling" />
   </component>
 </project>

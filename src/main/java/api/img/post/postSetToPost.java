@@ -20,9 +20,11 @@ public class postSetToPost implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
+        centralisedLogger.log("handling handler");
         try {
-            String img_id = commands[1];
-            String post_id = commands[2];
+            centralisedLogger.log(Arrays.toString(commands));
+            String img_id = commands[2];
+            String post_id = commands[3];
             centralisedLogger.log("Command: " + Arrays.toString(commands));
             s.execute("UPDATE lpost_images SET post_id = '" + post_id + "' WHERE image_id = " + img_id);
             resp.setStatus(HttpServletResponse.SC_OK);
