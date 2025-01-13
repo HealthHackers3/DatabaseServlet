@@ -30,14 +30,15 @@ public class postSearch implements apiCommandHandler {
             return;
         }
 
-        // SQL query combining Full-Text Search and Trigram Similarity
-        String sql = "SELECT post_id, " +
-                "ts_rank(to_tsvector('english', post_search_key), to_tsquery('english', ?)) AS full_text_rank, " +
-                "similarity(post_search_key, ?) AS similarity_rank " +
-                "FROM Lposts_composite " +
-                "WHERE to_tsvector('english', post_search_key) @@ to_tsquery('english', ?) " +
-                "OR post_search_key % ? " +
-                "OR post_search_key ILIKE '%' || ? || '%' " + // Add ILIKE for substring matching
+        String sql = "SELECT lc.post_id, " +
+                "lp.cell_type_id, lp.image_modality_id, " +
+                "ts_rank(to_tsvector('english', lc.post_search_key), to_tsquery('english', ?)) AS full_text_rank, " +
+                "similarity(lc.post_search_key, ?) AS similarity_rank " +
+                "FROM Lposts_composite lc " +
+                "JOIN Lposts lp ON lc.post_id = lp.post_id " + // Join Lposts_composite with Lposts
+                "WHERE to_tsvector('english', lc.post_search_key) @@ to_tsquery('english', ?) " +
+                "OR lc.post_search_key % ? " +
+                "OR lc.post_search_key ILIKE '%' || ? || '%' " +
                 "ORDER BY similarity_rank DESC, full_text_rank DESC";
 
         System.out.println(sql);
@@ -53,6 +54,7 @@ public class postSearch implements apiCommandHandler {
             pstmt.setString(3, tsQuery);  // For Full-Text WHERE clause
             pstmt.setString(4, searchString); // For Trigram similarity
             pstmt.setString(5, searchString);// For ILIKE condition
+
             try (ResultSet rs = pstmt.executeQuery()) {
                 StringBuilder resultJson = new StringBuilder();
                 resultJson.append("[");
@@ -61,11 +63,18 @@ public class postSearch implements apiCommandHandler {
                 while (rs.next()) {
                     hasResults = true;
                     int postId = rs.getInt("post_id");
+                    int cellTypeId = rs.getInt("cell_type_id");
+                    int imageModalityId = rs.getInt("image_modality_id");
                     float fullTextRank = rs.getFloat("full_text_rank");
                     float similarityRank = rs.getFloat("similarity_rank");
-                    System.out.println(postId + " " + fullTextRank + " " + similarityRank);
+
+                    System.out.println(postId + " " + cellTypeId + " " + imageModalityId + " " + fullTextRank + " " + similarityRank);
+
                     // Append result to JSON array
-                    resultJson.append(String.format("{\"post_id\":%d,\"full_text_rank\":%f,\"similarity_rank\":%f},", postId, fullTextRank, similarityRank));
+                    resultJson.append(String.format(
+                            "{\"post_id\":%d,\"cell_type_id\":%d,\"image_modality_id\":%d,\"full_text_rank\":%f,\"similarity_rank\":%f},",
+                            postId, cellTypeId, imageModalityId, fullTextRank, similarityRank
+                    ));
                 }
 
                 if (hasResults) {

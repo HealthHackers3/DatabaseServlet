@@ -30,6 +30,7 @@ public class getPostMap implements apiCommandHandler {
         getPostCommands.put("getcelltypes", new getCellTypes());
         getPostCommands.put("getimagemodalities", new getImageModalities());
         getPostCommands.put("checkname", new getCheckName(commands));
+        getPostCommands.put("postimgs", new getPostImages(commands));
     }
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException {
