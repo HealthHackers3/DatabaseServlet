@@ -55,10 +55,11 @@ public class postImgMap implements apiCommandHandler {
 class postPostImage implements apiCommandHandler {
 
     private static final Logger log = LoggerFactory.getLogger(postPostImage.class);
-    private static final String BUCKET_NAME = "hhdbstorage";
-    private static final Region REGION = Region.EU_WEST_2; // Replace with your S3 region
-    private static final String ACCESS_KEY = "AKIA54WIGLXL5TLKTH4D";
-    private static final String SECRET_KEY = "79vfbJSiPydqbp21fK6a8TOuDOXcgbad6EA5Y3tJ";
+    private static final String BUCKET_NAME = "cellverse";
+    private static final Region REGION = Region.EU_NORTH_1; // Replace with your S3 region
+    private static final String ACCESS_KEY = "AKIA3C6FMJINPQ4YFWCN";
+    private static final String SECRET_KEY = "wfE6VSrfsQvmSMmU/PG3yO1kUPorwQZR8TPHdNoH";
+
 
     String[] commands;
 
