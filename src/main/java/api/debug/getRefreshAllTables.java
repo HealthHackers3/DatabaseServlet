@@ -123,6 +123,16 @@ public class getRefreshAllTables implements apiCommandHandler {
                     "expires_at TIMESTAMP NOT NULL," +
                     "FOREIGN KEY (user_id) REFERENCES Lusers(user_id) ON DELETE CASCADE" +
                     ");");
+            s.execute(
+                    "CREATE TABLE IF NOT EXISTS Lposts_composite (" +
+                            "    post_id INT NOT NULL," +
+                            "    post_search_key TEXT," +
+                            "    search_vector tsvector," +
+                            "    FOREIGN KEY (post_id) REFERENCES Lposts(post_id) ON DELETE CASCADE" +
+                            ");"
+            );
+            s.execute("CREATE EXTENSION IF NOT EXISTS pg_trgm;");
+
 
             s.execute("DO $$ DECLARE " +
                     "category_list TEXT := 'Other,Eukarya,Bacteria,Archaea,Viruses,Prions';" +

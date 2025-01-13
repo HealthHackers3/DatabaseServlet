@@ -28,6 +28,7 @@ public class postPostMap implements apiCommandHandler {
         userInfoCommands.put("newpost", new postNewPost(commands));
         userInfoCommands.put("like", new postLike(commands));
         userInfoCommands.put("unlike", new postUnlike(commands));
+        userInfoCommands.put("search", new postSearch());
     }
 
     @Override
