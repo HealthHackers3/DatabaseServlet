@@ -124,6 +124,14 @@ public class getRefreshAllTables implements apiCommandHandler {
                     "expires_at TIMESTAMP NOT NULL," +
                     "FOREIGN KEY (user_id) REFERENCES Lusers(user_id) ON DELETE CASCADE" +
                     ");");
+            //insert a dummy user and post
+            s.execute("INSERT INTO Lusers (user_id, username, password, email, created_at) " +
+                    "VALUES (-1, 'dummy_user', 'dummy_password', 'dummy_user@example.com', CURRENT_TIMESTAMP) " +
+                    "ON CONFLICT (user_id) DO NOTHING;");
+
+            s.execute("INSERT INTO Lposts (post_id, poster_id, post_name, category_id, cell_type_id, image_modality_id, description, likes, upload_date) " +
+                    "VALUES (-1, -1, 'Dummy Post', 2, 2, 2, 'This post is used to store temporary images before being attached to a post', 0, CURRENT_TIMESTAMP) " +
+                    "ON CONFLICT (post_id) DO NOTHING;");
             s.execute(
                     "CREATE TABLE IF NOT EXISTS Lposts_composite (" +
                             "    post_id INT NOT NULL," +
