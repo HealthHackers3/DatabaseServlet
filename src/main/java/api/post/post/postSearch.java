@@ -22,11 +22,9 @@ public class postSearch implements apiCommandHandler {
         String searchQuery = req.getReader().lines().collect(Collectors.joining(System.lineSeparator())).trim();
         ObjectMapper objectMapper = new ObjectMapper();
         String searchString = objectMapper.readTree(searchQuery).get("query").asText();
-        System.out.println("Search String: " + searchString);
 
         if (searchString.isEmpty()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().write("{\"error\":\"Search query cannot be empty.\"}");
+            handleError(resp, "Search query cannot be empty.", new Exception("Search query cannot be empty."));
             return;
         }
 

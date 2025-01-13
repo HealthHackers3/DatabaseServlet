@@ -15,7 +15,8 @@ public class getPostListAZ implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
-        s.execute("SELECT post_id FROM lposts ORDER BY post_name ASC");
+        //return full list of posts
+        s.execute("SELECT post_id FROM lposts ORDER BY post_name");
         statement2Json(req,resp,s);
     }
 }

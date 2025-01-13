@@ -40,16 +40,12 @@ public class getPostCoverImgID implements apiCommandHandler {
                         resp.getWriter().write("{\"image_id\": " + imageId + "}");
                     } else {
                         // No images found for the given post ID
-                        resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                        resp.getWriter().write("{\"error\": \"No images found for the given post ID\"}");
+                        handleError(resp, "No images found for the given post ID", new Exception("No images found for the given post ID"));
                     }
                 }
             }
         } catch (Exception e) {
-            // Handle errors
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().write("{\"error\": \"An error occurred: " + e.getMessage() + "\"}");
-            e.printStackTrace();
+            handleError(resp, "An error occurred while obtaining the id", e);
         }
     }
 }

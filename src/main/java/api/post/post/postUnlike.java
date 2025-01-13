@@ -1,7 +1,6 @@
 package api.post.post;
 
 import api.interfaces.apiCommandHandler;
-import util.centralisedLogger;
 import util.userAuthenticator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,13 +45,10 @@ public class postUnlike implements apiCommandHandler {
 
                 } else {
                     // Like does not exist
-                    resp.setContentType("application/json");
-                    resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
-                    resp.getWriter().write("{\"error\": \"User has not liked this post.\"}");
+                    handleError(resp, "User has not liked this post.", new Exception("User has not liked this post."));
                 }
             }
         } catch (Exception e) {
-            centralisedLogger.log("Error removing like: " + e.getMessage());
             handleError(resp, e.getMessage(), e);
             throw e;
         }

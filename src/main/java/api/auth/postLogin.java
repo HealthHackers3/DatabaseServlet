@@ -14,30 +14,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Arrays;
-import java.util.Map;
 import java.util.UUID;
 
 public class postLogin implements apiCommandHandler {
     String[] commands;
-    public postLogin(String[] commands){
+
+    public postLogin(String[] commands) {
         this.commands = commands;
     }
+
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, java.sql.Statement s) throws IOException, SQLException {
-        centralisedLogger.log("Handling Login Request");
         resp.setContentType("application/json");
-
         try {
+            // Retrieve email and password from request parameters
             String email = req.getParameter("email");
             String password = req.getParameter("password");
 
             if (email == null || password == null) {
-                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                resp.getWriter().write("{\"error\": \"Missing username or password\"}");
+                // Missing credentials
+                handleError(resp, "Missing username or password", new Exception("Missing username or password"));
                 return;
             }
 
+            // Query the database for the user
             String sql = "SELECT user_id, password FROM lusers WHERE email = ?";
             try (PreparedStatement ps = s.getConnection().prepareStatement(sql)) {
                 ps.setString(1, email);
@@ -46,12 +46,14 @@ public class postLogin implements apiCommandHandler {
                         int userId = rs.getInt("user_id");
                         String hashedPassword = rs.getString("password");
 
+                        // Verify password
                         if (passwordHasher.verifyPassword(password, hashedPassword)) {
-                            // Generate session token
+                            // Create a session token
                             String sessionToken = UUID.randomUUID().toString();
-                            long sessionDuration = 60 * 60 * 24; // 24 hours in seconds
+                            long sessionDuration = 60 * 60 * 24; // 24 hours
                             long expiryTimestamp = System.currentTimeMillis() + (sessionDuration * 1000);
 
+                            // Insert session into database
                             String insertSessionSql = "INSERT INTO Lsessions (user_id, session_token, expires_at) VALUES (?, ?, ?)";
                             try (PreparedStatement sessionPs = s.getConnection().prepareStatement(insertSessionSql)) {
                                 sessionPs.setInt(1, userId);
@@ -66,22 +68,24 @@ public class postLogin implements apiCommandHandler {
                             sessionCookie.setPath("/");
                             resp.addCookie(sessionCookie);
 
+
                             centralisedLogger.log("User authenticated successfully: " + email);
                             resp.getWriter().write("{\"message\": \"Login successful\", \"userId\": " + userId + "}");
                         } else {
+                            // Invalid credentials
                             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             resp.getWriter().write("{\"error\": \"Invalid username or password\"}");
                         }
                     } else {
+                        // User not found
                         resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                         resp.getWriter().write("{\"error\": \"Invalid username or password\"}");
                     }
                 }
             }
         } catch (SQLException e) {
-            centralisedLogger.log("Database error: " + e.getMessage());
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().write("{\"error\": \"Database error\"}");
+            // Handle database errors
+            handleError(resp, "Database error", e);
         }
     }
 }

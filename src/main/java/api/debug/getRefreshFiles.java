@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Statement;
-
+//REMOVE THIS
 public class getRefreshFiles implements apiCommandHandler {
 
     public static HttpServletResponse resp;
@@ -25,7 +25,7 @@ public class getRefreshFiles implements apiCommandHandler {
         resp.getWriter().write("{\"message\": \"Directories verified and listed successfully\"}");
     }
     public static void checkWriteableDirectories(){
-            // List of paths to try
+        // List of paths to try
         String[] pathsToCheck = {
                 System.getenv("UPLOAD_DIR"),                      // Environment variable
                 System.getProperty("java.io.tmpdir"),            // Temporary directory

@@ -14,32 +14,36 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class postPostMap implements apiCommandHandler {
+    // Map to store command names and their corresponding handlers
     private final Map<String, apiCommandHandler> userInfoCommands = new HashMap<>();
-    private final String[] commands;
+    private final String[] commands; // Stores the parsed command path
 
-    public postPostMap(String[] commands){
+    public postPostMap(String[] commands) {
         this.commands = commands;
-        userInfoCommands.put("newpost", new postNewPost(commands));
-        userInfoCommands.put("like", new postLike(commands));
-        userInfoCommands.put("unlike", new postUnlike(commands));
-        userInfoCommands.put("search", new postSearch());
+
+        // Initialize available commands and their handlers
+        userInfoCommands.put("newpost", new postNewPost(commands)); // Handles creating a new post
+        userInfoCommands.put("like", new postLike(commands));       // Handles liking a post
+        userInfoCommands.put("unlike", new postUnlike(commands));   // Handles unliking a post
+        userInfoCommands.put("search", new postSearch());           // Handles searching for posts
     }
 
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException {
+        // Log the command being executed
         centralisedLogger.log("Command: " + Arrays.toString(commands));
-        try{
+
+        try {
+            // Route the request to the corresponding handler based on the second command in the path
             userInfoCommands.get(commands[1]).handle(req, resp, s);
-        }catch (Exception e){
+        } catch (Exception e) {
+            // Handle invalid or missing commands
             handleError(resp, "{\"error\": \"Invalid Command Field\"}", e);
-            return;
         }
     }
-
 }

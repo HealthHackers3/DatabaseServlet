@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class getHandler {
-    //class variables
+    // Stores available command handlers
     private final Map<String, apiCommandHandler> commandHandlers = new HashMap<>();
     HttpServletRequest req;
     HttpServletResponse resp;
@@ -29,26 +29,25 @@ public class getHandler {
         this.resp = resp;
         this.s = s;
         this.commands = commandPath;
-        //define get commands commands
+
+        // Initialize command handlers for specific commands
         commandHandlers.put("users", new getUserMap(commands));
         commandHandlers.put("img", new getImgMap(commands));
         commandHandlers.put("post", new getPostMap(commands));
         commandHandlers.put("console", new getErrorConsole());
         commandHandlers.put("refreshAll", new getRefreshAllTables());
         commandHandlers.put("refreshFiles", new getRefreshFiles());
-
-
     }
 
-    //execute command
+    // Executes the appropriate handler based on the command
     public void execute() throws Exception {
-        //check if command exists
+        // Check if the command is valid
         if (commands[0] == null || !commandHandlers.containsKey(commands[0])) {
-            //resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().write("{\"error\": \"Invalid or missing command\"}");
             return;
         }
-        //run class of command
+
+        // Execute the associated handler
         commandHandlers.get(commands[0]).handle(req, resp, s);
     }
 }

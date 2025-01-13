@@ -4,6 +4,7 @@ import api.interfaces.apiCommandHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import util.centralisedLogger;
 import util.passwordHasher;
+import util.userAuthenticator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,23 +18,26 @@ import java.util.Map;
 
 public class postNewUser implements apiCommandHandler {
     String[] commands;
-    public postNewUser(String[] commands){
+
+    public postNewUser(String[] commands) {
         this.commands = commands;
     }
+
     @Override
-    public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException {
+    public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         centralisedLogger.log("Command: " + Arrays.toString(commands));
         resp.setContentType("application/json");
 
+        // Check if the user session is valid
+        if (!userAuthenticator.checkSession(req, resp, s.getConnection())) {
+            return;
+        }
         try {
-            // Log content type
-            centralisedLogger.log("Content-Type: " + req.getContentType());
-
-            // Parse input fields
+            // Determine request content type and parse input fields
             String username = null, password = null, email = null;
 
-            // Handle JSON input
             if ("application/json".equals(req.getContentType())) {
+                // Handle JSON input
                 BufferedReader reader = req.getReader();
                 StringBuilder jsonBuilder = new StringBuilder();
                 String line;
@@ -41,34 +45,25 @@ public class postNewUser implements apiCommandHandler {
                     jsonBuilder.append(line);
                 }
                 String json = jsonBuilder.toString();
-                centralisedLogger.log("Raw JSON Body: " + json);
-
-                // Parse JSON
                 ObjectMapper objectMapper = new ObjectMapper();
                 Map<String, String> jsonMap = objectMapper.readValue(json, Map.class);
                 username = jsonMap.get("username");
                 password = jsonMap.get("password");
                 email = jsonMap.get("email");
-            }
-            // Handle form data
-            else if ("application/x-www-form-urlencoded".equals(req.getContentType())) {
+            } else if ("application/x-www-form-urlencoded".equals(req.getContentType())) {
+                // Handle form data input
                 username = req.getParameter("username");
                 password = req.getParameter("password");
                 email = req.getParameter("email");
             }
 
-            // Log parsed fields
-            centralisedLogger.log("Parsed username: " + username);
-            centralisedLogger.log("Parsed password: " + password);
-            centralisedLogger.log("Parsed email: " + email);
-
-            // Validate input
+            // Validate parsed input
             if (username == null || password == null || email == null) {
                 handleError(resp, "{\"error\": \"Missing required fields\"}", null);
                 return;
             }
 
-            // Insert the new user into the database
+            // Insert new user into the database
             String sql = "INSERT INTO lusers (username, password, email) VALUES (?, ?, ?)";
             try (PreparedStatement ps = s.getConnection().prepareStatement(sql)) {
                 ps.setString(1, username);
@@ -77,17 +72,18 @@ public class postNewUser implements apiCommandHandler {
 
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected > 0) {
-                    centralisedLogger.log("{\"success\": \"User added successfully\"}");
                     resp.getWriter().write("{\"message\": \"User added successfully\"}");
                 } else {
                     resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    handleError(resp, "{\"error\": \"Failed to add user\"}", null);
+                    handleError(resp, "{\"error\": \"Failed to add user\"}", new Exception("Failed to add user"));
                 }
             }
         } catch (SQLException e) {
+            // Handle database-specific errors
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             handleError(resp, "{\"error\": \"Database error: " + e.getMessage() + "\"}", e);
         } catch (Exception e) {
+            // Handle unexpected errors
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
             handleError(resp, "{\"error\": \"Unexpected error: " + e.getMessage() + "\"}", e);
         }

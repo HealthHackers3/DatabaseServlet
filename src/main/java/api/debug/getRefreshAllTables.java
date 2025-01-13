@@ -14,6 +14,7 @@ public class getRefreshAllTables implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         try {
+            // Refresh all SQL tables to default in case we mess anything up
             // Step 1: Drop all tables in reverse order of dependencies
             String dropAllObjects =
                     "DO $$ " +
@@ -168,9 +169,7 @@ public class getRefreshAllTables implements apiCommandHandler {
             resp.setContentType("application/json");
             resp.getWriter().write("{\"message\": \"Tables reset successfully\"}");
         } catch (Exception e) {
-            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().write("{\"error\": \"Failed to reset tables: " + e.getMessage() + "\"}");
-            e.printStackTrace();
+            handleError(resp, "Failed to reset tables:" + e.getMessage(), e);
         }
     }
 }

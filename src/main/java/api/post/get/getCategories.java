@@ -11,6 +11,7 @@ public class getCategories implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
+        //return the categories in alphabetical order
         s.execute("SELECT * FROM lcategories WHERE category_name != 'Other' ORDER BY category_name");
         statement2Json(req,resp,s);
     }

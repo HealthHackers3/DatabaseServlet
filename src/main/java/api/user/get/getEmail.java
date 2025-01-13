@@ -17,6 +17,7 @@ public class getEmail implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
+        //return the email
         centralisedLogger.log("Command: " + Arrays.toString(commands));
         s.execute("SELECT email FROM lusers WHERE user_id = " + commands[1]);
         statement2Json(req,resp,s);

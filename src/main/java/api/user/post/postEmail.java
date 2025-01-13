@@ -20,8 +20,8 @@ public class postEmail implements apiCommandHandler {
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
         try {
+            //update email
             String email = req.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-            centralisedLogger.log("Command: " + Arrays.toString(commands));
             s.execute("UPDATE lusers SET email = '" + email + "' WHERE user_id = " + commands[1]);
         }catch(SQLException e){
             handleError(resp, "Invalid request", e);

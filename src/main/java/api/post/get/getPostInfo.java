@@ -15,6 +15,7 @@ public class getPostInfo implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
+        //return post info
         s.execute("SELECT * FROM lposts WHERE post_id = " + commands[2]);
         statement2Json(req,resp,s);
     }

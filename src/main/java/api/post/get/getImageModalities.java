@@ -11,6 +11,7 @@ public class getImageModalities implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
         if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
+        //return the categories in alphabetical order
         s.execute("SELECT * FROM limage_modalities WHERE image_modality_name != 'Other' ORDER BY image_modality_name");
         statement2Json(req,resp,s);
     }

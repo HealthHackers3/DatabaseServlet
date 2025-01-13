@@ -17,35 +17,38 @@ import java.util.List;
 import java.util.Map;
 
 public interface apiCommandHandler {
+    // Primary method to handle API commands, implemented by subclasses
     void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception;
 
+    // Converts a SQL ResultSet into JSON and writes it to the HTTP response
     default void statement2Json(HttpServletRequest req, HttpServletResponse resp, Statement s) throws SQLException, IOException {
         ResultSet rs = s.getResultSet();
         ResultSetMetaData rsmd = rs.getMetaData();
         int columnCount = rsmd.getColumnCount();
         List<Map<String, Object>> resultList = new ArrayList<>();
-        while(rs.next()){
+
+        // Iterate over rows in the ResultSet
+        while (rs.next()) {
             Map<String, Object> row = new HashMap<>();
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = rsmd.getColumnName(i);
-                Object columnValue = rs.getObject(i);
-                row.put(columnName, columnValue);
+                row.put(rsmd.getColumnName(i), rs.getObject(i));
             }
             resultList.add(row);
         }
-        // Convert the result to JSON using Gson
-        Gson gson = new Gson();
-        String jsonResponse = gson.toJson(resultList);
-        // Send the JSON response back to the client
+
+        // Convert results to JSON and send the response
+        String jsonResponse = new Gson().toJson(resultList);
         resp.getWriter().write(jsonResponse);
     }
 
+    // Handles errors by invoking a utility class to manage error responses
     default void handleError(HttpServletResponse resp, String errorMessage, Exception e) throws SQLException, IOException {
-        errorHandler errorHandler = new errorHandler(resp, errorMessage, e);
+        new util.errorHandler(resp, errorMessage, e);
     }
 
+    // Handles success responses via a utility class
     default void handleSuccess(HttpServletResponse resp, String successMessage) throws SQLException, IOException {
-        successHandler successHandler = new successHandler(resp, successMessage);
+        new util.successHandler(resp, successMessage);
     }
-
 }
+

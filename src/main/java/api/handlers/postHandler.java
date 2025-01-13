@@ -1,4 +1,5 @@
 package api.handlers;
+
 import api.auth.postAuthMap;
 import api.img.post.postImgMap;
 import api.interfaces.apiCommandHandler;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class postHandler {
-    //class variables
+    // Stores command handlers
     private final Map<String, apiCommandHandler> commandHandlers = new HashMap<>();
     HttpServletRequest req;
     HttpServletResponse resp;
@@ -28,7 +29,7 @@ public class postHandler {
         this.s = s;
         this.commands = commandPath;
 
-        //define get commands commands
+        // Initialize handlers for post commands
         commandHandlers.put("sqlraw", new postSQLRequest(commands));
         commandHandlers.put("img", new postImgMap(commands));
         commandHandlers.put("auth", new postAuthMap(commands));
@@ -36,17 +37,15 @@ public class postHandler {
         commandHandlers.put("post", new postPostMap(commands));
     }
 
-    //execute command
+    // Executes the appropriate handler based on the command
     public void execute() throws Exception {
-        //check if command exists in the map from before
+        // Validate command
         if (commands[0] == null || !commandHandlers.containsKey(commands[0])) {
-            //resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             resp.getWriter().write("{\"error\": \"Invalid or missing command\"}");
             return;
         }
-        //run class of command
+
+        // Execute the handler for the given command
         commandHandlers.get(commands[0]).handle(req, resp, s);
     }
 }
-
-

@@ -44,18 +44,11 @@ public class getLikeStatus implements apiCommandHandler {
                             "\"has_liked\": " + hasLiked +
                             "}");
                 } else {
-                    resp.setContentType("application/json");
-                    resp.setCharacterEncoding("UTF-8");
-                    resp.getWriter().write("{" +
-                            "\"error\": \"Unable to determine like status.\"}");
+                    handleError(resp, "Unable to determine like status", new Exception("Unable to determine like status"));
                 }
             }
         } catch (Exception e) {
-            resp.setContentType("application/json");
-            resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write("{" +
-                    "\"error\": \"An error occurred while checking like status.\"}");
-            throw e;
+            handleError(resp, "An error occurred while checking like status.", e);
         }
     }
 }

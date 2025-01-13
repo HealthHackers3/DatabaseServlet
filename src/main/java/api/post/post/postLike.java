@@ -27,7 +27,6 @@ public class postLike implements apiCommandHandler {
 
         try {
             // Add a like to lpost_likes
-
             String insertLikeSQL = "INSERT INTO lpost_likes (post_id, user_id) VALUES (?, ?) ON CONFLICT DO NOTHING;";
             try (PreparedStatement insertLikeStmt = s.getConnection().prepareStatement(insertLikeSQL)) {
                 insertLikeStmt.setInt(1, postId);
@@ -47,13 +46,11 @@ public class postLike implements apiCommandHandler {
 
                 } else {
                     // Like already exists
+                    handleError(resp, "User has already liked this post.", new Exception("User has already liked this post."));
                     resp.setContentType("application/json");
-                    // resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-                    resp.getWriter().write("{\"error\": \"User has already liked this post.\"}");
                 }
             }
         } catch (Exception e) {
-            centralisedLogger.log("Error adding like: " + e.getMessage());
             handleError(resp, e.getMessage(), e);
             throw e;
         }

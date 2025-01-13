@@ -6,30 +6,49 @@ import util.userAuthenticator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
-import java.util.stream.Collectors;
 
 public class postSetToPost implements apiCommandHandler {
     String[] commands;
+
     public postSetToPost(String[] commands) {
         this.commands = commands;
     }
 
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws Exception {
-        if(!userAuthenticator.checkSession(req, resp, s.getConnection())){return;}
-        centralisedLogger.log("handling handler");
+        // Validate the user's session
+        if (!userAuthenticator.checkSession(req, resp, s.getConnection())) {
+            return;
+        }
         try {
-            centralisedLogger.log(Arrays.toString(commands));
-            String img_id = commands[2];
-            String post_id = commands[3];
-            centralisedLogger.log("Command: " + Arrays.toString(commands));
-            s.execute("UPDATE lpost_images SET post_id = '" + post_id + "' WHERE image_id = " + img_id);
+            // Log the incoming commands
+            centralisedLogger.log("Commands: " + Arrays.toString(commands));
+
+            // Extract image ID and post ID from the commands
+            String imgId = commands[2];
+            String postId = commands[3];
+
+            // Log the operation details
+            centralisedLogger.log("Setting image ID " + imgId + " to post ID " + postId);
+
+            // Use PreparedStatement for secure database interaction
+            String updateSQL = "UPDATE lpost_images SET post_id = ? WHERE image_id = ?";
+            try (PreparedStatement ps = s.getConnection().prepareStatement(updateSQL)) {
+                ps.setString(1, postId);
+                ps.setString(2, imgId);
+                ps.executeUpdate(); // Execute the update query
+            }
+
+            // Send success response
             resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().write("{\"message\":\"successfully added image to " +post_id+ "\"}");
-        }catch(SQLException e){
+            resp.getWriter().write("{\"message\":\"Successfully added image to post " + postId + "\"}");
+
+        } catch (SQLException e) {
+            // Handle SQL exceptions and send error response
             handleError(resp, "Invalid request", e);
         }
     }
