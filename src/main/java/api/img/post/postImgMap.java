@@ -43,6 +43,7 @@ public class postImgMap implements apiCommandHandler {
 
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s) throws IOException, SQLException {
+
         try {
             userInfoCommands.get(commands[1]).handle(req, resp, s);
         } catch (Exception e) {
@@ -68,6 +69,10 @@ class postPostImage implements apiCommandHandler {
     @Override
     public void handle(HttpServletRequest req, HttpServletResponse resp, Statement s)
             throws Exception {
+        long startTime;
+        startTime = System.currentTimeMillis();
+        centralisedLogger.log("Starting initialization");
+
         centralisedLogger.log("Command: " + Arrays.toString(commands));
         if (!userAuthenticator.checkSession(req, resp, s.getConnection())) {
             return;
@@ -88,8 +93,10 @@ class postPostImage implements apiCommandHandler {
 
         Map<Integer, Map<String, String>> imageData = new HashMap<>();
         ArrayList<FileItem> imageSaveData = new ArrayList<>();
-
+        centralisedLogger.log("Completed in: " + (System.currentTimeMillis() - startTime));
         try {
+            startTime = System.currentTimeMillis();
+            centralisedLogger.log("Starting data compile");
             List<FileItem> fileItems = upload.parseRequest(req);
 
             for (FileItem item : fileItems) {
@@ -103,6 +110,7 @@ class postPostImage implements apiCommandHandler {
                     imageSaveData.add(item);
                 }
             }
+            centralisedLogger.log("Completed in: " + (System.currentTimeMillis() - startTime));
 
             uploadImagesToS3(imageData, imageSaveData, s, resp);
 
@@ -120,6 +128,8 @@ class postPostImage implements apiCommandHandler {
                 .build();
 
         for (FileItem item : imageSaveData) {
+            long startTime = System.currentTimeMillis();
+            centralisedLogger.log("Starting SQL insert");
             Map<String, String> imageDetails = imageData.get(Integer.parseInt(getLastCharacter(item.getFieldName())));
             int orderIndex = Integer.parseInt(imageDetails.get("order_index"));
             String imageFileName = imageDetails.get("image_file_name");
@@ -135,7 +145,10 @@ class postPostImage implements apiCommandHandler {
                 }
                 String s3Key = "uploads/fullResPostImages/" + "["+imageId + "][" + orderIndex + "]" + FilenameUtils.getName(item.getName());
                 s.executeUpdate("UPDATE Lpost_images SET image_path = '" + s3Key + "' WHERE image_id = '" + imageId + "'");
+                centralisedLogger.log("Completed in: " + (System.currentTimeMillis() - startTime));
                 // Upload the full-resolution image directly to S3
+                startTime = System.currentTimeMillis();
+                centralisedLogger.log("Starting s3 upload");
                 PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                         .bucket(BUCKET_NAME)
                         .key(s3Key)
@@ -143,6 +156,7 @@ class postPostImage implements apiCommandHandler {
 
                 s3Client.putObject(putObjectRequest, software.amazon.awssdk.core.sync.RequestBody.fromBytes(item.get()));
                 s3Key = "uploads/fullResPostImages/" + "[thumbnail]"+"["+imageId + "][" + orderIndex + "]" + FilenameUtils.getName(item.getName());
+                centralisedLogger.log("Completed in: " + (System.currentTimeMillis() - startTime));
                 createAndUploadThumbnail(item, imageId, s3Key, s3Client, s);
 
                 resp.setContentType("application/json");
@@ -157,6 +171,8 @@ class postPostImage implements apiCommandHandler {
     }
 
     private void createAndUploadThumbnail(FileItem item, int fullResId, String s3Key, S3Client s3Client, Statement s) throws SQLException, IOException {
+        long startTime = System.currentTimeMillis();
+        centralisedLogger.log("Starting thumbnail processing");
         BufferedImage originalImage = ImageIO.read(new ByteArrayInputStream(item.get()));
         int maxThumbnailHeight = 250;
         int maxThumbnailWidth = 250;
@@ -187,7 +203,10 @@ class postPostImage implements apiCommandHandler {
         byte[] thumbnailBytes = outputStream.toByteArray();
 
         String thumbnailKey = s3Key.replace("fullResPostImages", "thumbnailPostImages");
+        centralisedLogger.log("Completed in: " + (System.currentTimeMillis() - startTime));
 
+        startTime = System.currentTimeMillis();
+        centralisedLogger.log("Starting thumbnail upload");
         PutObjectRequest thumbnailRequest = PutObjectRequest.builder()
                 .bucket(BUCKET_NAME)
                 .key(thumbnailKey)
@@ -197,6 +216,7 @@ class postPostImage implements apiCommandHandler {
 
         String insertSQL = "INSERT INTO Lpost_images_thumbnails (post_id, ref_image_id, image_path) VALUES (" +"-1"+ ", " + fullResId + ", '" + thumbnailKey + "')";
         s.execute(insertSQL);
+        centralisedLogger.log("Completed in: " + (System.currentTimeMillis() - startTime));
     }
 
     private String chopLastTwoCharacters(String input) {
