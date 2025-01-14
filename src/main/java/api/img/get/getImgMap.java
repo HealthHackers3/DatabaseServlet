@@ -169,7 +169,7 @@ class getProperties implements apiCommandHandler {
 
         int image_id = Integer.parseInt(commands[2]);
         try {
-            ResultSet rs = s.executeQuery("SELECT cell_count, cell_density, cell_dimensions_y, cell_dimensions_x FROM lpost_images WHERE image_id = " + image_id);
+            ResultSet rs = s.executeQuery("SELECT post_id, cell_count, order_index, image_file_name FROM lpost_images WHERE image_id = " + image_id);
 
             if (rs.next()) {
                 int cellCount = rs.getInt("cell_count");
