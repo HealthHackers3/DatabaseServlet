@@ -22,7 +22,7 @@ public class getPostImages implements apiCommandHandler {
             int postId = Integer.parseInt(commands[2]);
 
             // SQL query to fetch image IDs for the given post_id ordered by image_index
-            String sql = "SELECT image_id FROM Lpost_images WHERE post_id = " + postId + " ORDER BY image_index";
+            String sql = "SELECT image_id FROM Lpost_images WHERE post_id = " + postId + " ORDER BY order_index";
 
             centralisedLogger.log("Executing SQL: " + sql);
 
