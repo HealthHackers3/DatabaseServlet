@@ -166,29 +166,10 @@ class getProperties implements apiCommandHandler {
         if (!userAuthenticator.checkSession(req, resp, s.getConnection())) {
             return;
         }
-
         int image_id = Integer.parseInt(commands[2]);
         try {
-            ResultSet rs = s.executeQuery("SELECT post_id, cell_count, order_index, image_file_name FROM lpost_images WHERE image_id = " + image_id);
-
-            if (rs.next()) {
-                int cellCount = rs.getInt("cell_count");
-                float cellDimensionsY = rs.getFloat("cell_dimensions_y");
-                float cellDimensionsX = rs.getFloat("cell_dimensions_x");
-                float cellDensity = rs.getFloat("cell_density");
-
-                JsonObject json = new JsonObject();
-                json.addProperty("cell_count", cellCount);
-                json.addProperty("cell_density", cellDensity);
-                json.addProperty("cell_dimensions_y", cellDimensionsY);
-                json.addProperty("cell_dimensions_x", cellDimensionsX);
-
-                resp.setContentType("application/json");
-                resp.setCharacterEncoding("UTF-8");
-                resp.getWriter().write(json.toString());
-            } else {
-                resp.sendError(HttpServletResponse.SC_NOT_FOUND, "No data found for the given image ID");
-            }
+            s.executeQuery("SELECT post_id, cell_count, order_index, image_file_name FROM lpost_images WHERE image_id = " + image_id);
+            statement2Json(req, resp, s);
         } catch (SQLException e) {
             handleError(resp, "{\"error\": \"Database error while fetching image properties\"}", e);
         } catch (Exception e) {
