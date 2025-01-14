@@ -59,7 +59,7 @@ public class getRefreshAllTables implements apiCommandHandler {
             s.execute("CREATE TABLE Lposts (" +
                     "post_id SERIAL PRIMARY KEY," +
                     "poster_id INT NOT NULL," +
-                    "post_name VARCHAR(100) UNIQUE NOT NULL," +
+                    "post_name VARCHAR(100) NOT NULL," +
                     "category_id INT NOT NULL," +
                     "cell_type_id INT NOT NULL," +
                     "image_modality_id INT NOT NULL," +
