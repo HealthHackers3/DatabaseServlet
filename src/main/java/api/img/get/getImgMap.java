@@ -48,10 +48,10 @@ public class getImgMap implements apiCommandHandler {
 
 class getFullres implements apiCommandHandler {
     private static final Logger log = LoggerFactory.getLogger(getFullres.class);
-    private static final String BUCKET_NAME = "hhdbstorage";
-    private static final Region REGION = Region.EU_WEST_2; // Replace with your S3 region
-    private static final String ACCESS_KEY = "AKIA54WIGLXL5TLKTH4D";
-    private static final String SECRET_KEY = "79vfbJSiPydqbp21fK6a8TOuDOXcgbad6EA5Y3tJ";
+    private static final String BUCKET_NAME = "cellverse";
+    private static final Region REGION = Region.EU_NORTH_1; // Replace with your S3 region
+    private static final String ACCESS_KEY = "AKIA3C6FMJINPQ4YFWCN";
+    private static final String SECRET_KEY = "wfE6VSrfsQvmSMmU/PG3yO1kUPorwQZR8TPHdNoH";
     private final String[] commands;
 
     public getFullres(String[] commands) {
@@ -101,10 +101,10 @@ class getFullres implements apiCommandHandler {
 
 class getThumbnail implements apiCommandHandler {
     private static final Logger log = LoggerFactory.getLogger(getThumbnail.class);
-    private static final String BUCKET_NAME = "hhdbstorage";
-    private static final Region REGION = Region.EU_WEST_2; // Replace with your S3 region
-    private static final String ACCESS_KEY = "AKIA54WIGLXL5TLKTH4D";
-    private static final String SECRET_KEY = "79vfbJSiPydqbp21fK6a8TOuDOXcgbad6EA5Y3tJ";
+    private static final String BUCKET_NAME = "cellverse";
+    private static final Region REGION = Region.EU_NORTH_1; // Replace with your S3 region
+    private static final String ACCESS_KEY = "AKIA3C6FMJINPQ4YFWCN";
+    private static final String SECRET_KEY = "wfE6VSrfsQvmSMmU/PG3yO1kUPorwQZR8TPHdNoH";
     private final String[] commands;
 
     public getThumbnail(String[] commands) {
