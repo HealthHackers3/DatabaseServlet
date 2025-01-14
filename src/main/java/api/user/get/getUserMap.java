@@ -22,6 +22,7 @@ public class getUserMap implements apiCommandHandler {
         getUserCommands.put("username", new getUsername(commands));
         getUserCommands.put("email", new getEmail(commands));
         getUserCommands.put("date", new getCreatedDate(commands));
+        getUserCommands.put("favourites", new getLikedPosts(commands));
     }
 
     @Override
