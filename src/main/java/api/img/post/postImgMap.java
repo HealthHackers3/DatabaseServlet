@@ -134,10 +134,11 @@ class postPostImage implements apiCommandHandler {
             Map<String, String> imageDetails = imageData.get(Integer.parseInt(getLastCharacter(item.getFieldName())));
             int orderIndex = Integer.parseInt(imageDetails.get("order_index"));
             String imageFileName = imageDetails.get("image_file_name");
+            int cellCount = Integer.parseInt(imageDetails.get("cell_count"));
             int imageId = 0;
             try {
-                String insertSQL = "INSERT INTO Lpost_images (post_id, order_index, image_file_name) VALUES (" +
-                        "-1" + ", " + orderIndex + ", '" + imageFileName + "') RETURNING image_id";
+                String insertSQL = "INSERT INTO Lpost_images (post_id, order_index, image_file_name, cell_count) VALUES (" +
+                        "-1" + ", " + orderIndex + ", '" + imageFileName + "', " + cellCount + ") RETURNING image_id";
 
                 try (ResultSet rs = s.executeQuery(insertSQL)) {
                     if (rs.next()) {
